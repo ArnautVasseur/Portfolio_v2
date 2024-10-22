@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <h1>test</h1>
-    <testmenu/>
+  <div class="main">
+    <sidebar-menu/>
   </div>
 </template>
 
@@ -11,8 +10,12 @@
 
 <style scoped lang="scss">
 
-h1{
-  color: variables.$c_poison;
+.main{
+  width: 100%;
+  height: 100vh;
+  padding: 50px;
+  background: variables.$c_water_bg;
+  overflow: hidden;
 }
 
 </style>

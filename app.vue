@@ -3,11 +3,15 @@
 </script>
 
 <template>
-  <div>
+  <div class="main">
     <NuxtPage/>
   </div>
 </template>
 
 <style scoped lang="scss">
+
+.main{
+  overflow: hidden;
+}
 
 </style>
