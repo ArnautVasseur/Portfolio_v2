@@ -1,6 +1,8 @@
 <template>
-  <div class="main">
-    <sidebar-menu/>
+  <div class="homepage">
+    <skillset-preview/>
+    <skillset-preview/>
+    <skillset-preview/>
   </div>
 </template>
 
@@ -10,11 +12,11 @@
 
 <style scoped lang="scss">
 
-.main{
+.homepage{
   width: 100%;
-  height: 100vh;
-  padding: 50px;
-  // background: variables.$c_water_bg;
+  height: 100%;
+  display: flex;
+  gap: 50px;
 }
 
 </style>

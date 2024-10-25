@@ -61,6 +61,7 @@ const hoveredIcon = ref<string | null>(null);
   justify-content: space-between;
   align-items: center;
   padding: 30px 0px;
+  flex:none;
 }
 
 .sub-menu {

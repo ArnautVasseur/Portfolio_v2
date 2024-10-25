@@ -1,31 +1,33 @@
 <template>
   <div class="type-list-container">
+    <div class="mask" :class="isDropdownOpen ? 'mask-visible': ''" @click="toggleDropdown"></div>
+
     <div class="selected-icon" @click="toggleDropdown">
       <img :src="currentIcon.src" :alt="currentIcon.alt" />
     </div>
 
-    <transition name="slide" @before-leave="beforeLeave" @leave="leave">
-      <div v-if="isDropdownOpen" class="dropdown-menu">
-        <ul>
-          <li
-            v-for="(icon, index) in remainingIcons"
-            :key="index"
-            @click="selectIcon(index)"
-            @mouseover="hoverIcon(icon.alt)"
-            @mouseleave="resetHoverIcon"
-            :style="{
-              '--i': index,
-              backgroundColor: hoveredIcon === icon.alt ? Colors[icon.alt] : 'transparent'
-            }"
+      <transition name="slide" @before-leave="beforeLeave" @leave="leave">
+        <div v-if="isDropdownOpen" class="dropdown-menu">
+          <ul>
+            <li
+              v-for="(icon, index) in icons"
+              :key="index"
+              @click="selectIcon(index)"
+              @mouseover="hoverIcon(icon.alt)"
+              @mouseleave="resetHoverIcon"
+              :style="{
+                '--i': index,
+                backgroundColor: hoveredIcon === icon.alt ? Colors[icon.alt] : 'transparent'
+              }"
 
-            class="icon-item"
-          >
-            <img :src="icon.src" :alt="icon.alt" />
-          </li>
-        </ul>
-      </div>
-    </transition>
-  </div>
+              class="icon-item"
+            >
+              <img :src="icon.src" :alt="icon.alt" />
+            </li>
+          </ul>
+        </div>
+      </transition>
+    </div>
 </template>
 
 <script lang="ts">
@@ -96,7 +98,7 @@ export default {
     };
 
     const remainingIcons = computed<Icon[]>(() => {
-      return icons.value.filter((icon: Icon) => icon !== currentIcon.value);
+      return icons.value;
     });
 
     const selectIcon = (index: number) => {
@@ -140,13 +142,33 @@ export default {
       resetHoverIcon,
       hoveredIcon,
       leave,
-      colorMode
+      colorMode,
+      icons
     };
   }
 };
 </script>
 
-<style scoped lang="scss">  
+<style scoped lang="scss">
+
+.mask {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 0;
+  height: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  transition: all 0.5s;
+}
+
+.mask-visible{
+  width: 100vw;
+  height: 100vh;
+  opacity: 1;
+}
+
 .type-list-container {
   display: flex;
   align-items: center;
@@ -160,22 +182,30 @@ export default {
 
 .dropdown-menu {
   position: absolute;
-  margin-left: 100px;
-  padding: 20px;
-  background: variables.$c_water;
+  max-width: fit-content;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  padding: 15px;
   border-radius: 20px;
   overflow: hidden;
+  z-index: 20;
 }
 
 .dropdown-menu ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 15px;
+  justify-items: center;
+  align-items: center;
+  place-items: center;
 }
 
 .icon-item {
-  padding: 10px;
+  padding: 5px;
   cursor: pointer;
   opacity: 0;
   animation: slideIn 0.3s ease forwards;
@@ -193,16 +223,17 @@ export default {
 }
 
 .dropdown-menu img {
-  width: 50px;
+  width: 40px;
   height: auto;
 }
 
 .slide-enter-active {
-  animation: animatedSize 0.3s ease-in-out;
+  animation: animatedSize 1s ease-in-out;
 }
 
 .slide-leave-active {
-  animation: animatedSize 0.3s ease-in-out reverse;
+  animation: animatedSize 0.75s ease-in-out reverse;
+  padding: 0;
 }
 
 @keyframes animatedSize {
