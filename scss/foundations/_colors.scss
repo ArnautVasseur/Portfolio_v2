@@ -1,0 +1,66 @@
+@use "variables" as variables;
+
+$mode-colors_bg: (
+  "Poison": variables.$c_poison_bg,
+  "Fairy": variables.$c_fairy_bg,
+  "Psychic": variables.$c_psychic_bg,
+  "Fighting": variables.$c_fighting_bg,
+  "Ground": variables.$c_ground_bg,
+  "Fire": variables.$c_fire_bg,
+  "Electrik": variables.$c_electrik_bg,
+  "Bug": variables.$c_bug_bg,
+  "Grass": variables.$c_grass_bg,
+  "Ice": variables.$c_ice_bg,
+  "Steel": variables.$c_steel_bg,
+  "Ghost": variables.$c_ghost_bg,
+  "Dragon": variables.$c_dragon_bg,
+  "Water": variables.$c_water_bg,
+  "Flying": variables.$c_flying_bg,
+  "Dark": variables.$c_dark_bg,
+  "Normal": variables.$c_normal_bg,
+  "Rock": variables.$c_rock_bg,
+);
+
+$mode-colors: (
+  "Poison": variables.$c_poison,
+  "Fairy": variables.$c_fairy,
+  "Psychic": variables.$c_psychic,
+  "Fighting": variables.$c_fighting,
+  "Ground": variables.$c_ground,
+  "Fire": variables.$c_fire,
+  "Electrik": variables.$c_electrik,
+  "Bug": variables.$c_bug,
+  "Grass": variables.$c_grass,
+  "Ice": variables.$c_ice,
+  "Steel": variables.$c_steel,
+  "Ghost": variables.$c_ghost,
+  "Dragon": variables.$c_dragon,
+  "Water": variables.$c_water,
+  "Flying": variables.$c_flying,
+  "Dark": variables.$c_dark,
+  "Normal": variables.$c_normal,
+  "Rock": variables.$c_rock,
+);
+
+// Mixin to loop through each mode and set the background color
+@mixin mode-backgrounds {
+  @each $mode, $color in $mode-colors_bg {
+    .#{$mode}-mode body {
+      background-color: $color;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+}
+
+@mixin mode-container {
+    @each $mode, $color in $mode-colors {
+      .#{$mode}-mode .container, .#{$mode}-mode .dropdown-menu {
+        background-color: $color;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+
+// Include the mode-backgrounds mixin to apply styles
+@include mode-backgrounds;
+@include mode-container

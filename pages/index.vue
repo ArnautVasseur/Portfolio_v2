@@ -14,8 +14,7 @@
   width: 100%;
   height: 100vh;
   padding: 50px;
-  background: variables.$c_water_bg;
-  overflow: hidden;
+  // background: variables.$c_water_bg;
 }
 
 </style>

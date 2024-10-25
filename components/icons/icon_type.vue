@@ -37,6 +37,7 @@ interface Icon {
 
 export default {
   setup() {
+
     const icons = ref<Icon[]>([
       { src: "/types_icons/Poison.svg", alt: "Poison" },
       { src: "/types_icons/Fairy.svg", alt: "Fairy" },
@@ -79,8 +80,10 @@ export default {
       Rock: '#C7B78B'
     };
 
+    const colorMode = useColorMode()
+    console.log(colorMode.preference)
 
-    const currentIcon = ref<Icon>(icons.value[0]);
+    const currentIcon = ref<Icon>(icons.value.find((icon:Icon) => icon.alt === "Water") || icons.value[0]);
     const isDropdownOpen = ref(false);
     const showIcons = ref(false);
     const hoveredIcon = ref<string | null>(null);
@@ -100,6 +103,12 @@ export default {
       const selectedIcon = remainingIcons.value[index];
       currentIcon.value = selectedIcon;
       isDropdownOpen.value = false;
+
+      const selectedMode = selectedIcon.alt;
+      if (selectedMode) {
+        colorMode.preference = selectedMode;
+        console.log(colorMode.preference)
+      }
     };
 
     const beforeLeave = () => {
@@ -130,12 +139,12 @@ export default {
       hoverIcon,
       resetHoverIcon,
       hoveredIcon,
-      leave
+      leave,
+      colorMode
     };
   }
 };
 </script>
-
 
 <style scoped lang="scss">  
 .type-list-container {
@@ -171,6 +180,7 @@ export default {
   opacity: 0;
   animation: slideIn 0.3s ease forwards;
   transition: opacity 0.3s ease, background-color 0.3s ease;
+  border-radius: 10px;
 
   &:not(:hover) {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg);
@@ -215,7 +225,6 @@ export default {
   }
 }
 
-/* Fade out animation */
 @keyframes fadeOut {
   0% {
     opacity: 1;
@@ -226,6 +235,6 @@ export default {
 }
 
 .icon-item.leaving {
-  animation: fadeOut 0.3s ease forwards; /* Fade out animation */
+  animation: fadeOut 0.3s ease forwards;
 }
 </style>

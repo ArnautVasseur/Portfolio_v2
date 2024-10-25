@@ -50,11 +50,12 @@ const hoveredIcon = ref<string | null>(null);
 </script>
 
 <style scoped lang="scss">
+
 .container {
   width: 136px;
   height: 100%;
   border-radius: 20px;
-  background: variables.$c_water;
+  background-color: variables.$c_water;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -69,4 +70,6 @@ const hoveredIcon = ref<string | null>(null);
   align-items: center;
   gap: 50px;
 }
+
+
 </style>
