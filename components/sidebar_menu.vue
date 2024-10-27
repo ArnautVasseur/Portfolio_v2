@@ -52,7 +52,7 @@ const hoveredIcon = ref<string | null>(null);
 <style scoped lang="scss">
 
 .container {
-  width: 136px;
+  width: 130px;
   height: 100%;
   border-radius: 20px;
   background-color: variables.$c_water;

@@ -68,7 +68,7 @@ export default {
       Fighting: '#CE4069',
       Ground: '#D97746',
       Fire: '#FF9C54',
-      Electrik: '#E2C129',
+      Electrik: '#FFCB00',
       Bug: '#90C12C',
       Grass: '#63BB5B',
       Ice: '#74CEC0',
@@ -85,7 +85,7 @@ export default {
     const colorMode = useColorMode()
     console.log(colorMode.preference)
 
-    const currentIcon = ref<Icon>(icons.value.find((icon:Icon) => icon.alt === "Water") || icons.value[0]);
+    const currentIcon = ref<Icon>(icons.value[0]);
     const isDropdownOpen = ref(false);
     const showIcons = ref(false);
     const hoveredIcon = ref<string | null>(null);

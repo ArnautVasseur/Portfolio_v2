@@ -12,7 +12,7 @@ $c_ground: rgba(217, 119, 70, 1);
 $c_ground_bg: rgba(248, 196, 164, 1);
 $c_fire: rgba(255, 156, 84, 1);
 $c_fire_bg: rgba(255, 225, 187, 1);
-$c_electrik: rgba(226, 193, 41, 1);
+$c_electrik: #ecc011;
 $c_electrik_bg: rgba(255, 241, 161, 1);
 $c_bug: rgba(144, 193, 44, 1);
 $c_bug_bg: rgba(217, 241, 163, 1);
@@ -39,5 +39,8 @@ $c_rock_bg: rgba(242, 234, 208, 1);
 
 
 /* Font settings */
-// @import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap');
 $Sen: "Sen", sans-serif;
+
+$h1: 32px;
+$h2: 24px;

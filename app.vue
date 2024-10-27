@@ -13,8 +13,7 @@
   padding: 50px;
   display: flex;
   gap: 50px;
+  font-family: variables.$Sen;
 }
-
-
 
 </style>
