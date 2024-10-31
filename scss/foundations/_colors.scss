@@ -58,22 +58,19 @@ $mode-colors: (
       background-color: $color;
       transition: all 0.3s ease-in-out;
     }
-  }
-}
 
-@mixin mode-title{
-  @each $mode, $color in $mode-colors {
     .#{$mode}-mode .name {
       color: darken($color, 10%);
       transition: all 0.3s ease-in-out;
     }
-  }
-}
 
-@mixin mode-subtitle{
-  @each $mode, $color in $mode-colors {
     .#{$mode}-mode .subtitle {
       color: $color;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .#{$mode}-mode .background-icon {
+      background-color: $color;
       transition: all 0.3s ease-in-out;
     }
   }
@@ -81,5 +78,3 @@ $mode-colors: (
 
 @include mode-backgrounds;
 @include mode-container;
-@include mode-title;
-@include mode-subtitle;

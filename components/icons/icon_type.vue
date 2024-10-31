@@ -1,151 +1,155 @@
 <template>
   <div class="type-list-container">
-    <div class="mask" :class="isDropdownOpen ? 'mask-visible': ''" @click="toggleDropdown"></div>
+    <div class="mask" :class="isDropdownOpen ? 'mask-visible' : ''" @click="toggleDropdown"></div>
 
     <div class="selected-icon" @click="toggleDropdown">
-      <img :src="currentIcon.src" :alt="currentIcon.alt" />
+      <component :is="currentIcon.component" />
     </div>
 
-      <transition name="slide" @before-leave="beforeLeave" @leave="leave">
-        <div v-if="isDropdownOpen" class="dropdown-menu">
-          <ul>
-            <li
-              v-for="(icon, index) in icons"
-              :key="index"
-              @click="selectIcon(index)"
-              @mouseover="hoverIcon(icon.alt)"
-              @mouseleave="resetHoverIcon"
-              :style="{
-                '--i': index,
-                backgroundColor: hoveredIcon === icon.alt ? Colors[icon.alt] : 'transparent'
-              }"
-
-              class="icon-item"
-            >
-              <img :src="icon.src" :alt="icon.alt" />
-            </li>
-          </ul>
-        </div>
-      </transition>
-    </div>
+    <transition name="slide" @before-leave="beforeLeave" @leave="leave">
+      <div v-if="isDropdownOpen" class="dropdown-menu">
+        <ul>
+          <li
+            v-for="(icon, index) in icons"
+            :key="index"
+            @click="selectIcon(index)"
+            @mouseover="hoverIcon(icon.alt)"
+            @mouseleave="resetHoverIcon"
+            :style="{
+              '--i': index,
+              backgroundColor: hoveredIcon === icon.alt ? Colors[icon.alt] : 'transparent'
+            }"
+            class="icon-item"
+          >
+            <component :is="icon.component" />
+          </li>
+        </ul>
+      </div>
+    </transition>
+  </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
+import { useColorModeStore } from "../../stores/global";
+
+import BugIcon from './types_icons/Bug.vue';
+import DarkIcon from './types_icons/Dark.vue';
+import DragonIcon from './types_icons/Dragon.vue';
+import ElectrikIcon from './types_icons/Electrik.vue';
+import FairyIcon from './types_icons/Fairy.vue';
+import FightingIcon from './types_icons/Fighting.vue';
+import FireIcon from './types_icons/Fire.vue';
+import FlyingIcon from './types_icons/Flying.vue';
+import GhostIcon from './types_icons/Ghost.vue';
+import GrassIcon from './types_icons/Grass.vue';
+import GroundIcon from './types_icons/Ground.vue';
+import IceIcon from './types_icons/Ice.vue';
+import NormalIcon from './types_icons/Normal.vue';
+import PoisonIcon from './types_icons/Poison.vue';
+import PsychicIcon from './types_icons/Psychic.vue';
+import SteelIcon from './types_icons/Steel.vue';
+import RockIcon from './types_icons/Rock.vue';
+import WaterIcon from './types_icons/Water.vue';
 
 interface Icon {
-  src: string;
+  component: any;
   alt: string;
 }
 
-export default {
-  setup() {
+const colorModeStore = useColorModeStore();
+const colorMode = useColorMode();
 
-    const icons = ref<Icon[]>([
-      { src: "/types_icons/Poison.svg", alt: "Poison" },
-      { src: "/types_icons/Fairy.svg", alt: "Fairy" },
-      { src: "/types_icons/Psychic.svg", alt: "Psychic" },
-      { src: "/types_icons/Fighting.svg", alt: "Fighting" },
-      { src: "/types_icons/Ground.svg", alt: "Ground" },
-      { src: "/types_icons/Fire.svg", alt: "Fire" },
-      { src: "/types_icons/Electrik.svg", alt: "Electrik" },
-      { src: "/types_icons/Bug.svg", alt: "Bug" },
-      { src: "/types_icons/Grass.svg", alt: "Grass" },
-      { src: "/types_icons/Ice.svg", alt: "Ice" },
-      { src: "/types_icons/Steel.svg", alt: "Steel" },
-      { src: "/types_icons/Ghost.svg", alt: "Ghost" },
-      { src: "/types_icons/Dragon.svg", alt: "Dragon" },
-      { src: "/types_icons/Water.svg", alt: "Water" },
-      { src: "/types_icons/Flying.svg", alt: "Flying" },
-      { src: "/types_icons/Dark.svg", alt: "Dark" },
-      { src: "/types_icons/Normal.svg", alt: "Normal" },
-      { src: "/types_icons/Rock.svg", alt: "Rock" }
-    ]);
+const icons = ref<Icon[]>([
+  { component: PoisonIcon, alt: "Poison" },
+  { component: FairyIcon, alt: "Fairy" },
+  { component: PsychicIcon, alt: "Psychic" },
+  { component: FightingIcon, alt: "Fighting" },
+  { component: GroundIcon, alt: "Ground" },
+  { component: FireIcon, alt: "Fire" },
+  { component: ElectrikIcon, alt: "Electrik" },
+  { component: BugIcon, alt: "Bug" },
+  { component: GrassIcon, alt: "Grass" },
+  { component: IceIcon, alt: "Ice" },
+  { component: SteelIcon, alt: "Steel" },
+  { component: GhostIcon, alt: "Ghost" },
+  { component: DragonIcon, alt: "Dragon" },
+  { component: WaterIcon, alt: "Water" },
+  { component: FlyingIcon, alt: "Flying" },
+  { component: DarkIcon, alt: "Dark" },
+  { component: NormalIcon, alt: "Normal" },
+  { component: RockIcon, alt: "Rock" }
+]);
 
-    const Colors: Record<string, string> = {
-      Poison: '#AB6AC8',
-      Fairy: '#EC8FE6',
-      Psychic: '#F97176',
-      Fighting: '#CE4069',
-      Ground: '#D97746',
-      Fire: '#FF9C54',
-      Electrik: '#FFCB00',
-      Bug: '#90C12C',
-      Grass: '#63BB5B',
-      Ice: '#74CEC0',
-      Steel: '#5A8EA1',
-      Ghost: '#5269AC',
-      Dragon: '#0A6DC4',
-      Water: '#4D90D5',
-      Flying: '#8FA8DD',
-      Dark: '#5A5366',
-      Normal: '#9099A1',
-      Rock: '#C7B78B'
-    };
+// Define colors for each icon type
+const Colors: Record<string, string> = {
+  Poison: '#AB6AC8',
+  Fairy: '#EC8FE6',
+  Psychic: '#F97176',
+  Fighting: '#CE4069',
+  Ground: '#D97746',
+  Fire: '#FF9C54',
+  Electrik: '#FFCB00',
+  Bug: '#90C12C',
+  Grass: '#63BB5B',
+  Ice: '#74CEC0',
+  Steel: '#5A8EA1',
+  Ghost: '#5269AC',
+  Dragon: '#0A6DC4',
+  Water: '#4D90D5',
+  Flying: '#8FA8DD',
+  Dark: '#5A5366',
+  Normal: '#9099A1',
+  Rock: '#C7B78B'
+};
 
-    const colorMode = useColorMode()
-    console.log(colorMode.preference)
+// Define component state and reactive properties
+const currentIcon = ref<Icon>(icons.value[0]);
+const isDropdownOpen = ref(false);
+const showIcons = ref(false);
+const hoveredIcon = ref<string | null>(null);
 
-    const currentIcon = ref<Icon>(icons.value[0]);
-    const isDropdownOpen = ref(false);
-    const showIcons = ref(false);
-    const hoveredIcon = ref<string | null>(null);
+// Computed property for the remaining icons
+const remainingIcons = computed<Icon[]>(() => {
+  return icons.value;
+});
 
-    const toggleDropdown = () => {
-      isDropdownOpen.value = !isDropdownOpen.value;
-      if (isDropdownOpen.value) {
-        showIcons.value = true;
-      }
-    };
-
-    const remainingIcons = computed<Icon[]>(() => {
-      return icons.value;
-    });
-
-    const selectIcon = (index: number) => {
-      const selectedIcon = remainingIcons.value[index];
-      currentIcon.value = selectedIcon;
-      isDropdownOpen.value = false;
-
-      const selectedMode = selectedIcon.alt;
-      if (selectedMode) {
-        colorMode.preference = selectedMode;
-        console.log(colorMode.preference)
-      }
-    };
-
-    const beforeLeave = () => {
-      showIcons.value = false;
-    };
-
-    const leave = () => {
-      showIcons.value = false;
-    };
-
-    const hoverIcon = (iconAlt: string) => {
-      hoveredIcon.value = iconAlt;
-    };
-
-    const resetHoverIcon = () => {
-      hoveredIcon.value = null;
-    };
-
-    return {
-      currentIcon,
-      remainingIcons,
-      isDropdownOpen,
-      toggleDropdown,
-      selectIcon,
-      showIcons,
-      beforeLeave,
-      Colors,
-      hoverIcon,
-      resetHoverIcon,
-      hoveredIcon,
-      leave,
-      colorMode,
-      icons
-    };
+// Toggle the dropdown menu visibility
+const toggleDropdown = () => {
+  isDropdownOpen.value = !isDropdownOpen.value;
+  if (isDropdownOpen.value) {
+    showIcons.value = true;
   }
+};
+
+// Select an icon and update the color mode
+const selectIcon = (index: number) => {
+  const selectedIcon = remainingIcons.value[index];
+  currentIcon.value = selectedIcon;
+  isDropdownOpen.value = false;
+
+  const selectedMode = selectedIcon.alt;
+  if (selectedMode) {
+    colorMode.preference = selectedMode;
+    colorModeStore.colorMode = selectedMode;
+  }
+};
+
+// Handle icon hover states
+const hoverIcon = (iconAlt: string) => {
+  hoveredIcon.value = iconAlt;
+};
+
+const resetHoverIcon = () => {
+  hoveredIcon.value = null;
+};
+
+// Control visibility of icons during transitions
+const beforeLeave = () => {
+  showIcons.value = false;
+};
+
+const leave = () => {
+  showIcons.value = false;
 };
 </script>
 
@@ -160,7 +164,7 @@ export default {
   height: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 10;
-  transition: all 0.5s;
+  transition: all 0.4s;
 }
 
 .mask-visible{
@@ -174,9 +178,7 @@ export default {
   align-items: center;
 }
 
-.selected-icon img {
-  filter: invert(100%);
-  width: 65px;
+.selected-icon {
   cursor: pointer;
 }
 
@@ -212,19 +214,19 @@ export default {
   transition: opacity 0.3s ease, background-color 0.3s ease;
   border-radius: 10px;
 
-  &:not(:hover) {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg);
+  &:not(:hover) * {
+    fill: white;
+  }
+
+  > *{
+    width: 50px;
+    height: 50px;
   }
 }
 
 
 .icon-item:nth-child(n) {
   animation-delay: calc(0.05s * var(--i));
-}
-
-.dropdown-menu img {
-  width: 40px;
-  height: auto;
 }
 
 .slide-enter-active {

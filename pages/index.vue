@@ -1,6 +1,7 @@
 <template>
   <div class="homepage">
     <div class="presentation">
+      <Icon_svgtypes name="Bug"/>
       <h1>My name is <span class="name">Arnaut Vasseur</span>,<br/> a web developer.</h1>
       <p class="subtitle left">( and a pokemon fan )</p>
       <p class="subtitle right-1">( and my favorite Pokemon is Dhelmise )</p>
@@ -10,10 +11,32 @@
     <skillset-preview class="projects"/>
     <skillset-preview class="skillset"/>
     <skillset-preview class="aboutMe"/>
+
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+import { useColorModeStore, icons } from "../stores/global";
+
+export default defineComponent({
+  setup() {
+    const colorModeStore = useColorModeStore();
+
+    const currentIcon = computed(() => {
+      return icons.find(icon => icon.alt === colorModeStore.colorMode) || icons[0];
+    });
+
+    const selectMode = (mode: string) => {
+      colorModeStore.colorMode = mode;
+    };
+
+    return {
+      currentIcon,
+      icons,
+      selectMode,
+    };
+  },
+});
 
 </script>
 
@@ -35,6 +58,7 @@
   .aboutMe { grid-area: 1 / 3 / 3 / 4; }
 
   .presentation{
+    position: relative;
 
     h1{
       color: #000;
@@ -65,6 +89,18 @@
       font-size: 12px;
     }
   }
+}
+
+.background-icon{
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  bottom: -55%;
+  left: -10%;
+  transform: rotate(15deg);
+  opacity: 30%;
+  transition: all 0.5s ease-in-out;
+  z-index: -1;
 }
 
 </style>
