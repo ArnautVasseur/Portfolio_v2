@@ -1,7 +1,7 @@
 <template>
   <div class="homepage">
     <div class="presentation">
-      <Icon_svgtypes name="Bug"/>
+      <Icon_svgtypes :name=currentColor class="background-icon"/>
       <h1>My name is <span class="name">Arnaut Vasseur</span>,<br/> a web developer.</h1>
       <p class="subtitle left">( and a pokemon fan )</p>
       <p class="subtitle right-1">( and my favorite Pokemon is Dhelmise )</p>
@@ -15,28 +15,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { useColorModeStore, icons } from "../stores/global";
+<script setup lang="ts">
+import { useColorModeStore } from "../stores/global";
 
-export default defineComponent({
-  setup() {
-    const colorModeStore = useColorModeStore();
+const colorModeStore = useColorModeStore();
 
-    const currentIcon = computed(() => {
-      return icons.find(icon => icon.alt === colorModeStore.colorMode) || icons[0];
-    });
-
-    const selectMode = (mode: string) => {
-      colorModeStore.colorMode = mode;
-    };
-
-    return {
-      currentIcon,
-      icons,
-      selectMode,
-    };
-  },
-});
+const currentColor = computed(() => colorModeStore.colorMode);
 
 </script>
 
@@ -93,10 +77,9 @@ export default defineComponent({
 
 .background-icon{
   position: absolute;
-  width: 350px;
-  height: 350px;
-  bottom: -55%;
-  left: -10%;
+  border: 1px solid black;
+  bottom: 0;
+  left: 0;
   transform: rotate(15deg);
   opacity: 30%;
   transition: all 0.5s ease-in-out;

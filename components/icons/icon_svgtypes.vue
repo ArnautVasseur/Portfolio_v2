@@ -1,6 +1,6 @@
 <template>
   <i>
-    <component :is="getIcon" v-if="getIcon" />
+    <component :is="getIcon" v-if="getIcon" class="test" />
   </i>
 </template>
   
@@ -54,3 +54,7 @@ const getIcon = computed(() => {
 });
 
 </script>
+
+<style scoped lang="scss">
+
+</style>

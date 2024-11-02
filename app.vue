@@ -1,3 +1,4 @@
+import { Dragon } from './.nuxt/components';
 <template>
   <div class="main">
     <sidebar-menu/>
@@ -17,3 +18,12 @@
 }
 
 </style>
+
+<script setup lang="ts">
+onMounted(() => {
+  console.log(localStorage.getItem("nuxt-color-mode"))
+  if (localStorage.getItem("nuxt-color-mode") !== "Ghost") {
+    localStorage.setItem("nuxt-color-mode", "Ghost");
+  }
+});
+</script>

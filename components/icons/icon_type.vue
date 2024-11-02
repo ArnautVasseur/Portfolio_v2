@@ -59,7 +59,7 @@ interface Icon {
 const colorModeStore = useColorModeStore();
 const colorMode = useColorMode();
 
-const icons = ref<Icon[]>([
+const icons = shallowRef<Icon[]>([
   { component: PoisonIcon, alt: "Poison" },
   { component: FairyIcon, alt: "Fairy" },
   { component: PsychicIcon, alt: "Psychic" },
@@ -103,9 +103,9 @@ const Colors: Record<string, string> = {
 };
 
 // Define component state and reactive properties
-const currentIcon = ref<Icon>(icons.value[0]);
+const currentIcon = shallowRef<Icon>(icons.value[11]);
 const isDropdownOpen = ref(false);
-const showIcons = ref(false);
+const showIcons = shallowRef(false);
 const hoveredIcon = ref<string | null>(null);
 
 // Computed property for the remaining icons
