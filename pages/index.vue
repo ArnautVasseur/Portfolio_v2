@@ -77,13 +77,14 @@ const currentColor = computed(() => colorModeStore.colorMode);
 
 .background-icon{
   position: absolute;
-  border: 1px solid black;
-  bottom: 0;
-  left: 0;
+  bottom: -30%;
+  left: -10%;
   transform: rotate(15deg);
   opacity: 30%;
   transition: all 0.5s ease-in-out;
   z-index: -1;
+  color: blue;
+  fill: blue;
 }
 
 </style>

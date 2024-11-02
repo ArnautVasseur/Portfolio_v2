@@ -68,6 +68,11 @@ $mode-colors: (
       color: $color;
       transition: all 0.3s ease-in-out;
     }
+
+    .#{$mode}-mode .icon {
+      fill: $color;
+      transition: all 0.3s ease-in-out;
+    }
   }
 }
 

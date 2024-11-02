@@ -3,7 +3,7 @@
     <div class="mask" :class="isDropdownOpen ? 'mask-visible' : ''" @click="toggleDropdown"></div>
 
     <div class="selected-icon" @click="toggleDropdown">
-      <component :is="currentIcon.component" />
+      <component :is="currentIcon.component"/>
     </div>
 
     <transition name="slide" @before-leave="beforeLeave" @leave="leave">
@@ -180,6 +180,10 @@ const leave = () => {
 
 .selected-icon {
   cursor: pointer;
+
+  *{
+    fill: white
+  }
 }
 
 .dropdown-menu {
