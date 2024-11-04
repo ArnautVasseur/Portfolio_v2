@@ -182,7 +182,11 @@ const leave = () => {
   cursor: pointer;
 
   *{
-    fill: white
+    fill: white;
+  }
+
+  *:hover{
+    fill: black;
   }
 }
 

@@ -6,3 +6,11 @@
 </svg>
 
 </template>
+
+<style scoped lang="scss">
+
+svg path {
+  transition: fill 150ms ease-in-out;
+}
+
+</style>

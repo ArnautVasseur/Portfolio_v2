@@ -9,8 +9,8 @@
       <p class="subtitle right-3">( and my favorite region is Sinnoh )</p>
     </div>
     <skillset-preview class="projects"/>
-    <skillset-preview class="skillset"/>
-    <skillset-preview class="aboutMe"/>
+    <!-- <skillset-preview class="skillset"/>
+    <skillset-preview class="aboutMe"/> -->
 
   </div>
 </template>
@@ -81,10 +81,7 @@ const currentColor = computed(() => colorModeStore.colorMode);
   left: -10%;
   transform: rotate(15deg);
   opacity: 30%;
-  transition: all 0.5s ease-in-out;
   z-index: -1;
-  color: blue;
-  fill: blue;
 }
 
 </style>

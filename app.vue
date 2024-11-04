@@ -20,9 +20,15 @@ import { Dragon } from './.nuxt/components';
 </style>
 
 <script setup lang="ts">
+import { useColorModeStore } from "./stores/global";
+const colorModeStore = useColorModeStore();
+const colorMode = useColorMode();
+
 onMounted(() => {
   if (localStorage.getItem("nuxt-color-mode") !== "Ghost") {
     localStorage.setItem("nuxt-color-mode", "Ghost");
   }
+  localStorage.setItem("nuxt-color-mode", "Ghost");
+  colorMode.preference = "Ghost"
 });
 </script>

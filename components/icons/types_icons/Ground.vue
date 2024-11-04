@@ -4,3 +4,11 @@
 <path d="M14 26.6667H26.3333L12 64.6667H0L14 26.6667Z" fill="inherit"/>
 </svg>
 </template>
+
+<style scoped lang="scss">
+
+svg path {
+  transition: fill 150ms ease-in-out;
+}
+
+</style>

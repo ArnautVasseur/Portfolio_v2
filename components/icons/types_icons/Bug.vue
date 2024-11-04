@@ -5,6 +5,10 @@ import { LazyNuxtLoadingIndicator } from '../../../.nuxt/components';
     </svg>
 </template>
 
-<script setup lang="ts">
+<style scoped lang="scss">
 
-</script>
+svg path {
+  transition: fill 150ms ease-in-out;
+}
+
+</style>

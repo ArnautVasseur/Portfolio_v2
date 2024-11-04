@@ -1,33 +1,74 @@
 <template>
   <div class="container">
     <h2>My Skillset</h2>
+
+    <div class="skillset">
+      <div
+        v-for="(skillGroup, groupName) in skills"
+        :key="groupName"
+        class="skill"
+        @mouseenter="hoverIcon[groupName] = true"
+        @mouseleave="hoverIcon[groupName] = false"
+      >
+        <div v-if="Object.keys(skillGroup).length > 0" class="content">
+          <p class="text">
+            {{ skillGroup[Object.keys(skillGroup)[0]].name }}
+          </p>
+          
+          <img class="image" :src="skillGroup[Object.keys(skillGroup)[0]].image" alt="test">
+        </div>
+      </div>
+    </div>
+
     <RouterLink to="/skillset" class="link">
       <p>See More</p>
       <svg width="41" height="16" viewBox="0 0 41 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M40.7071 8.70711C41.0976 8.31659 41.0976 7.68342 40.7071 7.2929L34.3431 0.928935C33.9526 0.538411 33.3195 0.538411 32.9289 0.928935C32.5384 1.31946 32.5384 1.95262 32.9289 2.34315L38.5858 8L32.9289 13.6569C32.5384 14.0474 32.5384 14.6805 32.9289 15.0711C33.3195 15.4616 33.9526 15.4616 34.3431 15.0711L40.7071 8.70711ZM-8.74228e-08 9L40 9L40 7L8.74228e-08 7L-8.74228e-08 9Z" fill="white"/>
+        <path
+          d="M40.7071 8.70711C41.0976 8.31659 41.0976 7.68342 40.7071 7.2929L34.3431 0.928935C33.9526 0.538411 33.3195 0.538411 32.9289 0.928935C32.5384 1.31946 32.5384 1.95262 32.9289 2.34315L38.5858 8L32.9289 13.6569C32.5384 14.0474 32.5384 14.6805 32.9289 15.0711C33.3195 15.4616 33.9526 15.4616 34.3431 15.0711L40.7071 8.70711ZM-8.74228e-08 9L40 9L40 7L8.74228e-08 7L-8.74228e-08 9Z"
+          fill="white"
+        />
       </svg>
     </RouterLink>
   </div>
 </template>
 
 <script lang="ts" setup>
+import Skills from "../json/skills.json";
 
+interface Skill {
+  name: string;
+  proficiency: number;
+  image: string;
+}
+
+interface SkillGroup {
+  [skillName: string]: Skill;
+}
+
+interface SkillsData {
+  [groupName: string]: SkillGroup;
+}
+
+const skills: SkillsData = Skills.Hard_Skills;
+
+const hoverIcon = ref<Record<string, boolean>>(
+  Object.fromEntries(Object.keys(skills).map(key => [key, false]))
+);
 </script>
 
 <style scoped lang="scss">
-
-.container{
+.container {
   position: relative;
   width: 100%;
   border-radius: 20px;
   padding: 20px;
   flex-shrink: 0;
 
-  h2{
-    @include mixins.h2
+  h2 {
+    @include mixins.h2;
   }
 
-  .link{
+  .link {
     position: absolute;
     bottom: 20px;
     right: 20px;
@@ -37,6 +78,55 @@
     align-items: center;
     color: white;
     gap: 10px;
+  }
+
+  .skillset {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: black;
+    padding: 10px;
+    width: 100%;
+    height: 80%;
+
+    .skill {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 22%;
+      aspect-ratio: 1/1;
+      border-radius: 10px;
+      margin-top: 10px;
+
+      .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        font-size: 14px;
+        text-align: center;
+        position: relative;
+
+        p, img {
+          position: absolute;
+          transition: opacity 0.3s ease;
+        }
+
+        p{
+          opacity: 0;
+        }
+
+        &:hover p {
+          opacity: 1;
+        }
+
+        &:hover img{
+          opacity: 0;
+        }
+      }
+    }
   }
 }
 

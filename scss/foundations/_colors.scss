@@ -45,7 +45,7 @@ $mode-colors: (
 // Mixin to loop through each mode and set the background color
 @mixin mode-backgrounds {
   @each $mode, $color in $mode-colors_bg {
-    .#{$mode}-mode body {
+    .#{$mode}-mode body, .#{$mode}-mode .skill {
       background-color: $color;
       transition: all 0.3s ease-in-out;
     }
