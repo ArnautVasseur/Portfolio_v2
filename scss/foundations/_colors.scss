@@ -45,7 +45,7 @@ $mode-colors: (
 // Mixin to loop through each mode and set the background color
 @mixin mode-backgrounds {
   @each $mode, $color in $mode-colors_bg {
-    .#{$mode}-mode body, .#{$mode}-mode .skill, .#{$mode}-mode .project {
+    .#{$mode}-mode body, .#{$mode}-mode .skill, .#{$mode}-mode .project, .#{$mode}-mode .introduction .content, .#{$mode}-mode .contact_me>.content {
       background-color: $color;
       transition: all 0.3s ease-in-out;
     }
@@ -71,6 +71,7 @@ $mode-colors: (
 
     .#{$mode}-mode .icon {
       fill: $color;
+      color: $color;
       transition: all 0.3s ease-in-out;
     }
   }

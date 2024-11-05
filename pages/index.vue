@@ -10,7 +10,7 @@
     </div>
     <projects-preview class="projects"/>
     <skillset-preview class="skillset"/>
-
+    <aboutme_preview class="aboutMe"/>
   </div>
 </template>
 
