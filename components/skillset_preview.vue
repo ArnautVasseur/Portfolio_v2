@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h2>My Skillset</h2>
-
+    
     <div class="skillset">
       <div
         v-for="(skillGroup, groupName) in skills"
@@ -29,6 +29,8 @@
         />
       </svg>
     </RouterLink>
+
+    <IconBrush size="80%" class="background_icon"/>
   </div>
 </template>
 
@@ -62,7 +64,8 @@ const hoverIcon = ref<Record<string, boolean>>(
   width: 100%;
   border-radius: 20px;
   padding: 20px;
-  flex-shrink: 0;
+  overflow: hidden;
+  z-index: 1; // Ensure container content is above IconBrush
 
   h2 {
     @include mixins.h2;
@@ -114,15 +117,16 @@ const hoverIcon = ref<Record<string, boolean>>(
           transition: opacity 0.3s ease;
         }
 
-        p{
+        p {
           opacity: 0;
+          font-weight: 600;
         }
 
         &:hover p {
           opacity: 1;
         }
 
-        &:hover img{
+        &:hover img {
           opacity: 0;
         }
       }
@@ -130,4 +134,15 @@ const hoverIcon = ref<Record<string, boolean>>(
   }
 }
 
+.background_icon {
+  position: absolute;
+  bottom: -5%;
+  left: -5%;
+  opacity: 0.3;
+  z-index: -1;
+
+  * {
+    fill: white;
+  }
+}
 </style>

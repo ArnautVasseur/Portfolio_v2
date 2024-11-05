@@ -9,6 +9,12 @@
                 "image": "/icons/VueJS.svg"
             },
 
+            "NuxtJS":{
+                "name": "NuxtJS",
+                "proficiency": 90,
+                "image": "/icons/NuxtJS.svg"
+            },
+
             "chartJS":{
                 "name": "chartJS",
                 "proficiency": 80,

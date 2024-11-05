@@ -8,9 +8,8 @@
       <p class="subtitle right-2">( and my favorite type is ghost )</p>
       <p class="subtitle right-3">( and my favorite region is Sinnoh )</p>
     </div>
-    <skillset-preview class="projects"/>
-    <!-- <skillset-preview class="skillset"/>
-    <skillset-preview class="aboutMe"/> -->
+    <projects-preview class="projects"/>
+    <skillset-preview class="skillset"/>
 
   </div>
 </template>

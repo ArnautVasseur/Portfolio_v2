@@ -1,0 +1,26 @@
+{
+    "Projects":{
+        "Portfolio":{
+            "name": "Portfolio",
+            "category": "Projet Personnel",
+            "creation-date": "10-2024",
+            "logo": "/pokemon_icons/logo.svg",
+            "tags":[
+                "UI-bento",
+                "portfolio",
+                "front-end"
+            ],
+            "tools":[
+                "NuxtJS",
+                "Sass",
+                "Figma",
+                "Github",
+                "ChartJS"
+            ],
+            "description": "test",
+            "link": "https://github.com/ArnautVasseur/Portfolio_v2",
+            "website": "test_link",
+            "image": "/projects_images/portfolio.jpg"
+        }
+    }
+}
