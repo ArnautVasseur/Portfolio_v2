@@ -62,19 +62,22 @@ const hoverIcon = ref<Record<string, boolean>>(
 .container {
   position: relative;
   width: 100%;
+  height: 100%;
   border-radius: 20px;
   padding: 20px;
   overflow: hidden;
-  z-index: 1; // Ensure container content is above IconBrush
+  z-index: 1;
 
   h2 {
     @include mixins.h2;
+    height: 5%;
   }
 
   .link {
     position: absolute;
     bottom: 20px;
     right: 20px;
+    height: 5%;
     max-width: fit-content;
     display: flex;
     justify-content: space-between;
@@ -85,6 +88,7 @@ const hoverIcon = ref<Record<string, boolean>>(
 
   .skillset {
     display: flex;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
@@ -97,7 +101,7 @@ const hoverIcon = ref<Record<string, boolean>>(
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 22%;
+      width: 70px;
       aspect-ratio: 1/1;
       border-radius: 10px;
       margin-top: 10px;

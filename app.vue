@@ -11,9 +11,28 @@ import { Dragon } from './.nuxt/components';
 .main{
   width: 100%;
   height: 100vh;
-  padding: 50px;
+  @include mixins.mq('xs') {
+    padding: 0px;
+    gap: 20px;
+  }
+  @include mixins.mq('sm') {
+    padding: 0px;
+    gap: 20px;
+  }
+  @include mixins.mq('md') {
+    padding: 30px;
+    gap: 30px;
+  }
+  @include mixins.mq('lg') {
+    padding: 40px;
+    gap: 40px;
+  }
+  @include mixins.mq('xl') {
+    padding: 50px;
+    gap: 50px;
+  }
   display: flex;
-  gap: 50px;
+  
   font-family: variables.$Sen;
 }
 

@@ -4,3 +4,24 @@
     color: white;
     font-size: variables.$h2;
 }
+
+// breakpoints responsive design
+$breakpoints: (
+  'xs': 200px,
+  'sm': 768px,
+  'md': 1024px,
+  'lg': 1216px,
+  'xl': 1408px
+);
+
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if $type == max {
+      $width: $width - 0.02px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
