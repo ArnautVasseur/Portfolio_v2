@@ -94,9 +94,10 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: center;
   flex: none;
+  z-index: 2;
 
   @include mixins.mq("xs") {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     height: 80px;

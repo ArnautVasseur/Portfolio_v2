@@ -1,7 +1,7 @@
 <template>
   <div class="homepage">
     <icon-type v-if="isMobile" class="icon_type icon_bg" />
-    <div v-if="isMobile" class="icon_bg">
+    <div v-if="isMobile" class="icon_home icon_bg">
       <RouterLink to="/" >
         <icon-logo class="icon_mobile"
           :color="hoveredIcon === 'home' ? 'black' : 'white'"
@@ -14,13 +14,13 @@
       <Icon_svgtypes :name=currentColor class="background-icon"/>
       <h1>My name is <span class="name">Arnaut Vasseur</span>,<br/> a web developer.</h1>
       <p class="subtitle left">( and a pokemon fan )</p>
-      <p class="subtitle right-1">( and my favorite Pokemon is Dhelmise )</p>
-      <p class="subtitle right-2">( and my favorite type is ghost )</p>
-      <p class="subtitle right-3">( and my favorite region is Sinnoh )</p>
+      <p v-if="!isMobile" class="subtitle right-1">( and my favorite Pokemon is Dhelmise )</p>
+      <p v-if="!isMobile" class="subtitle right-2">( and my favorite type is ghost )</p>
+      <p v-if="!isMobile" class="subtitle right-3">( and my favorite region is Sinnoh )</p>
     </div>
     <projects-preview class="projects"/>
-    <skillset-preview class="skillset"/>
-    <aboutme_preview class="aboutMe"/>
+    <!-- <skillset-preview class="skillset"/> -->
+    <!-- <aboutme_preview class="aboutMe"/> -->
   </div>
 </template>
 
@@ -57,14 +57,15 @@ onBeforeUnmount(() => {
   height: 100%;
   display: grid;
   @include mixins.mq('xs') {
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr 1fr 1fr;
     gap: 10px;
-    padding: 20px;
+    padding: 120px 20px 20px 20px;
   }
   @include mixins.mq('sm') {
-    grid-template-columns: repeat(2, 1fr) 30%;
+    grid-template-columns: 50% 50%;
+    padding: 150px 40px 40px 40px;
     gap: 10px;
-    padding: 20px;
   }
   @include mixins.mq('md') {
     grid-template-columns: 1fr 1fr;
@@ -74,27 +75,22 @@ onBeforeUnmount(() => {
   }
   @include mixins.mq('lg') {
     grid-template-columns: repeat(2, 1fr) 30%;
-    grid-template-rows: 1fr 1fr 45%;
+    grid-template-rows: 1fr 45%;
     gap: 30px;
     padding: 0px;
   }
   @include mixins.mq('xl') {
     grid-template-columns: repeat(2, 1fr) 30%;
-    grid-template-rows: 1fr 45%;
     gap: 40px;
     padding: 0px;
   }
-
-
   grid-column-gap: 50px;
   grid-row-gap: 50px;
 
   .presentation { 
     @include mixins.mq('xs') {
-      
-    }
-    @include mixins.mq('sm') {
-      
+      grid-area: 1 / 1 / 2 / 3;
+      margin-bottom: 50px;
     }
     @include mixins.mq('md') {
       grid-area: 1 / 1 / 2 / 2;
@@ -109,16 +105,16 @@ onBeforeUnmount(() => {
 
   .projects { 
     @include mixins.mq('xs') {
-      
-    }
-    @include mixins.mq('sm') {
-      
-    }
-    @include mixins.mq('md') {
       grid-area: 2 / 1 / 3 / 2;
     }
+    @include mixins.mq('sm') {
+      grid-area: 2 / 1 / 3 / 2;
+    }
+    @include mixins.mq('md') {
+      
+    }
     @include mixins.mq('lg') {
-      grid-area: 2 / 1 / 4 / 1;
+      grid-area: 2 / 1 / 3 / 1;
     }
     @include mixins.mq('xl') {
       grid-area: 2 / 1 / 3 / 1; 
@@ -166,14 +162,27 @@ onBeforeUnmount(() => {
 
     h1{
       color: #000;
-      font-size: variables.$h1;
+      font-size: 32px;
       font-style: normal;
       font-weight: 400;
       line-height: 60px;
+
+      @include mixins.mq('xs'){
+        font-size: 24px;
+        line-height: 40px;
+      }
+      @include mixins.mq('sm'){
+        font-size: 32px;
+        line-height: 60px;
+      }
     }
 
     .left{
       font-size: 20px;
+
+      @include mixins.mq('xs'){
+        font-size: 16px;
+      }
     }
 
     .right-1, .right-2, .right-3{
@@ -210,6 +219,12 @@ onBeforeUnmount(() => {
     right: 20px;
   }
 
+  .icon_home{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+
   .icon_bg{
     padding: 20px;
     border-radius: 15px;
@@ -217,23 +232,64 @@ onBeforeUnmount(() => {
     height: fit-content;
 
     .icon_mobile{
-      width: 50px;
+      width: 40px;
       @include mixins.mq('sm') {
         width: 80px;
       }
     }
-  }
-
-  
+  }  
 }
 
 .background-icon{
   position: absolute;
-  bottom: -30%;
-  left: -10%;
+  width: fit-content;
   transform: rotate(15deg);
   opacity: 30%;
   z-index: -1;
+
+  @include mixins.mq('xs') {
+    display: none;
+  }
+  @include mixins.mq('sm') {
+    display: block;
+    right: 0;
+    bottom: 0;
+    
+    * {
+      width: 200px;
+      height: 200px;
+    }
+  }
+  @include mixins.mq('md') {
+    display: block;
+    right: 0;
+    bottom: -15%;
+    
+    * {
+      width: 200px;
+      height: 200px;
+    }
+  }
+  @include mixins.mq('lg') {
+    display: block;
+    right: 0;
+    bottom: -30%;
+    
+    * {
+      width: 250px;
+      height: 250px;
+    }
+  }
+  @include mixins.mq('xl') {
+    display: block;
+    right: 0;
+    bottom: -30%;
+    
+    * {
+      width: 300px;
+      height: 300px;
+    }
+  }
 }
 
 </style>

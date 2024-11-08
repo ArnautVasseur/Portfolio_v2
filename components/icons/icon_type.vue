@@ -186,8 +186,8 @@ const leave = () => {
       fill: white;
 
       @include mixins.mq('xs') {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
       }
       @include mixins.mq('sm') {
         width: 80px;

@@ -1,4 +1,5 @@
 @use "variables" as variables;
+@use "mixins" as mixins;
 
 $mode-colors_bg: (
   "Poison": variables.$c_poison_bg,
@@ -42,19 +43,34 @@ $mode-colors: (
   "Rock": variables.$c_rock,
 );
 
-// Mixin to loop through each mode and set the background color
 @mixin mode-backgrounds {
   @each $mode, $color in $mode-colors_bg {
-    .#{$mode}-mode body, .#{$mode}-mode .skill, .#{$mode}-mode .project, .#{$mode}-mode .introduction .content, .#{$mode}-mode .contact_me>.content {
+    .#{$mode}-mode body, 
+    .#{$mode}-mode .skill, 
+    .#{$mode}-mode .project, 
+    .#{$mode}-mode .introduction .content, 
+    .#{$mode}-mode .contact_me > .content {
       background-color: $color;
       transition: all 0.3s ease-in-out;
+
+      .project {
+        @include mixins.mq('xs') {
+          background-color: transparent;
+        }
+
+        @include mixins.mq('sm') {
+          background-color: $color;
+        }
+      }
     }
   }
 }
 
 @mixin mode-container {
   @each $mode, $color in $mode-colors {
-    .#{$mode}-mode .container, .#{$mode}-mode .dropdown-menu, .#{$mode}-mode .icon_bg {
+    .#{$mode}-mode .container, 
+    .#{$mode}-mode .dropdown-menu, 
+    .#{$mode}-mode .icon_bg {
       background-color: $color;
       transition: all 0.3s ease-in-out;
     }
