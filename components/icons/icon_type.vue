@@ -155,63 +155,74 @@ const leave = () => {
 
 <style scoped lang="scss">
 
-.mask {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  width: 0;
-  height: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 10;
-  transition: all 0.4s;
-}
-
-.mask-visible{
-  width: 100vw;
-  height: 100vh;
-  opacity: 1;
-}
-
 .type-list-container {
   display: flex;
   align-items: center;
-}
+  height: fit-content;
+  width: fit-content;
 
-.selected-icon {
-  cursor: pointer;
-
-  *{
-    fill: white;
+  .mask {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 0;
+    height: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    transition: all 0.4s;
   }
 
-  *:hover{
-    fill: black;
+  .mask-visible{
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
   }
-}
 
-.dropdown-menu {
-  position: absolute;
-  max-width: fit-content;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  padding: 15px;
-  border-radius: 20px;
-  overflow: hidden;
-  z-index: 20;
-}
+  .selected-icon {
+    cursor: pointer;
 
-.dropdown-menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 15px;
-  justify-items: center;
-  align-items: center;
-  place-items: center;
+    > *{
+      fill: white;
+
+      @include mixins.mq('xs') {
+        width: 50px;
+        height: 50px;
+      }
+      @include mixins.mq('sm') {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    *:hover{
+      fill: black;
+    }
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    max-width: fit-content;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    padding: 15px;
+    border-radius: 20px;
+    overflow: hidden;
+    z-index: 20;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 15px;
+      justify-items: center;
+      align-items: center;
+      place-items: center;
+    }
+  }
 }
 
 .icon-item {
@@ -231,7 +242,6 @@ const leave = () => {
     height: 50px;
   }
 }
-
 
 .icon-item:nth-child(n) {
   animation-delay: calc(0.05s * var(--i));

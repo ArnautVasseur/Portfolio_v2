@@ -59,7 +59,7 @@
       </div>
     </div>
     
-    <icon-type v-if="!isMobile" color="white" :size="iconSize" />
+    <icon-type v-if="!isMobile" />
   </div>
 </template>
 
@@ -76,6 +76,7 @@ function updateIconSize() {
   } else {
     iconSize.value = '2.5rem';
   }
+  isMobile.value = screenWidth <= 768
 }
 
 onMounted(() => {
@@ -106,15 +107,10 @@ onBeforeUnmount(() => {
   }
   @include mixins.mq("sm") {
     flex-direction: column;
-    position: absolute;
     width: 100%;
     height: 100px;
-    border-radius: 15px 15px 0 0;
-    justify-content: center;
-    padding: 15px 0;
   }
   @include mixins.mq("md") {
-    flex-direction: column;
     position: inherit;
     width: 130px;
     height: 100%;
@@ -123,21 +119,6 @@ onBeforeUnmount(() => {
     padding: 20px 0;
   }
   @include mixins.mq("lg") {
-    flex-direction: column;
-    position: inherit;
-    width: 130px;
-    height: 100%;
-    border-radius: 20px;
-    justify-content: space-between;
-    padding: 30px 0;
-  }
-  @include mixins.mq("xl") {
-    flex-direction: column;
-    position: inherit;
-    width: 130px;
-    height: 100%;
-    border-radius: 20px;
-    justify-content: space-between;
     padding: 30px 0;
   }
 }
@@ -153,7 +134,6 @@ onBeforeUnmount(() => {
     gap: 0px;
   }
   @include mixins.mq("sm") {
-    flex-direction: row;
     gap: 0px;
   }
   @include mixins.mq("md") {
@@ -161,11 +141,9 @@ onBeforeUnmount(() => {
     gap: 40px;
   }
   @include mixins.mq("lg") {
-    flex-direction: column;
     gap: 50px;
   }
   @include mixins.mq("xl") {
-    flex-direction: column;
     gap: 60px;
   }
 

@@ -54,7 +54,7 @@ $mode-colors: (
 
 @mixin mode-container {
   @each $mode, $color in $mode-colors {
-    .#{$mode}-mode .container, .#{$mode}-mode .dropdown-menu {
+    .#{$mode}-mode .container, .#{$mode}-mode .dropdown-menu, .#{$mode}-mode .icon_bg {
       background-color: $color;
       transition: all 0.3s ease-in-out;
     }

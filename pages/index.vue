@@ -1,14 +1,22 @@
 <template>
   <div class="homepage">
+    <icon-type v-if="isMobile" class="icon_type icon_bg" />
+    <div v-if="isMobile" class="icon_bg">
+      <RouterLink to="/" >
+        <icon-logo class="icon_mobile"
+          :color="hoveredIcon === 'home' ? 'black' : 'white'"
+          @mouseover="hoveredIcon = 'home'"
+          @mouseleave="hoveredIcon = null"
+        />
+      </RouterLink>
+    </div>
     <div class="presentation">
       <Icon_svgtypes :name=currentColor class="background-icon"/>
       <h1>My name is <span class="name">Arnaut Vasseur</span>,<br/> a web developer.</h1>
-      <div>
-        <p class="subtitle left">( and a pokemon fan )</p>
-        <p class="subtitle right-1">( and my favorite Pokemon is Dhelmise )</p>
-        <p class="subtitle right-2">( and my favorite type is ghost )</p>
-        <p class="subtitle right-3">( and my favorite region is Sinnoh )</p>
-      </div>
+      <p class="subtitle left">( and a pokemon fan )</p>
+      <p class="subtitle right-1">( and my favorite Pokemon is Dhelmise )</p>
+      <p class="subtitle right-2">( and my favorite type is ghost )</p>
+      <p class="subtitle right-3">( and my favorite region is Sinnoh )</p>
     </div>
     <projects-preview class="projects"/>
     <skillset-preview class="skillset"/>
@@ -22,6 +30,23 @@ import { useColorModeStore } from "../stores/global";
 const colorModeStore = useColorModeStore();
 
 const currentColor = computed(() => colorModeStore.colorMode);
+
+const isMobile = ref(false);
+const hoveredIcon = ref<string | null>(null);
+
+function updateIconSize() {
+  const screenWidth = window.innerWidth;
+  isMobile.value = screenWidth <= 768
+}
+
+onMounted(() => {
+  updateIconSize();
+  window.addEventListener('resize', updateIconSize);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', updateIconSize);
+});
 
 </script>
 
@@ -42,22 +67,22 @@ const currentColor = computed(() => colorModeStore.colorMode);
     padding: 20px;
   }
   @include mixins.mq('md') {
-    grid-template-columns: repeat(2, 1fr) 30%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     gap: 20px;
     padding: 0px;
-    grid-template-rows: 1fr 1fr 45%;
   }
   @include mixins.mq('lg') {
     grid-template-columns: repeat(2, 1fr) 30%;
+    grid-template-rows: 1fr 1fr 45%;
     gap: 30px;
     padding: 0px;
-    grid-template-rows: 1fr 1fr 45%;
   }
   @include mixins.mq('xl') {
     grid-template-columns: repeat(2, 1fr) 30%;
+    grid-template-rows: 1fr 45%;
     gap: 40px;
     padding: 0px;
-    grid-template-rows: 1fr 45%;
   }
 
 
@@ -72,10 +97,10 @@ const currentColor = computed(() => colorModeStore.colorMode);
       
     }
     @include mixins.mq('md') {
-      
+      grid-area: 1 / 1 / 2 / 2;
     }
     @include mixins.mq('lg') {
-      grid-area: 1 / 1 / 2 / 3; 
+      grid-area: 1 / 1 / 2 / 3;
     }
     @include mixins.mq('xl') {
       grid-area: 1 / 1 / 2 / 3; 
@@ -90,7 +115,7 @@ const currentColor = computed(() => colorModeStore.colorMode);
       
     }
     @include mixins.mq('md') {
-      
+      grid-area: 2 / 1 / 3 / 2;
     }
     @include mixins.mq('lg') {
       grid-area: 2 / 1 / 4 / 1;
@@ -108,7 +133,7 @@ const currentColor = computed(() => colorModeStore.colorMode);
       
     }
     @include mixins.mq('md') {
-      
+      grid-area: 2 / 2 / 3 / 3;
     }
     @include mixins.mq('lg') {
       grid-area: 2 / 2 / 4 / 3;
@@ -126,7 +151,7 @@ const currentColor = computed(() => colorModeStore.colorMode);
       
     }
     @include mixins.mq('md') {
-      
+      grid-area: 1 / 2 / 2 / 3;
     }
     @include mixins.mq('lg') {
       grid-area: 1 / 3 / 4 / 3;
@@ -157,17 +182,49 @@ const currentColor = computed(() => colorModeStore.colorMode);
     }
 
     .right-1{
-      font-size: 20px;
+      @include mixins.mq('xs') {
+        font-size: 12px
+      }
+      @include mixins.mq('xl') {
+        font-size: 20px;
+      }
     }
 
     .right-2{
-      font-size: 16px;
+      @include mixins.mq('xs') {
+        font-size: 12px
+      }
+      @include mixins.mq('xl') {
+        font-size: 16px;
+      }
     }
 
     .right-3{
       font-size: 12px;
     }
   }
+
+  .icon_type{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .icon_bg{
+    padding: 20px;
+    border-radius: 15px;
+    width: fit-content;
+    height: fit-content;
+
+    .icon_mobile{
+      width: 50px;
+      @include mixins.mq('sm') {
+        width: 80px;
+      }
+    }
+  }
+
+  
 }
 
 .background-icon{
