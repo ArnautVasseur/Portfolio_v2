@@ -59,7 +59,6 @@ onBeforeUnmount(() => {
   
   @include mixins.mq('xs') {
     padding: 120px 20px 20px 20px;
-    min-height: calc(100vh + 80px);
   }
   @include mixins.mq('sm') {
     display: grid;
@@ -67,7 +66,6 @@ onBeforeUnmount(() => {
     grid-template-columns: 50% 50%;
     padding: 150px 40px 40px 40px;
     gap: 10px;
-    min-height: auto;
   }
   @include mixins.mq('md') {
     grid-template-columns: 1fr 1fr;
@@ -145,9 +143,13 @@ onBeforeUnmount(() => {
     }
   }
   
-  .aboutMe {
+  .aboutMe { 
+    @include mixins.mq('xs') {
+
+    }
     @include mixins.mq('sm') {
       grid-area: 3 / 1 / 4 / 3;
+      margin: 0px;
     }
     @include mixins.mq('md') {
       grid-area: 1 / 2 / 2 / 3;

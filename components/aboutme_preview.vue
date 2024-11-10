@@ -102,6 +102,7 @@ onBeforeUnmount(() => {
     }
     @include mixins.mq('md'){
       flex-direction: column;
+      gap: 0px;
     }
 
     .gym_icon{
