@@ -4,22 +4,22 @@
     
     <div class="skillset">
       <div
-        v-for="(skillGroup, groupName) in skills"
+        v-if="skills && Object.keys(skills).length > 0"
+        v-for="(groupName, index) in Object.keys(skills).slice(0, 6)"
         :key="groupName"
         class="skill"
         @mouseenter="hoverIcon[groupName] = true"
         @mouseleave="hoverIcon[groupName] = false"
       >
-        <div v-if="Object.keys(skillGroup).length > 0" class="content">
+        <div v-if="skills[groupName] && Object.keys(skills[groupName]).length > 0" class="content">
           <p class="text">
-            {{ skillGroup[Object.keys(skillGroup)[0]].name }}
+            {{ skills[groupName][Object.keys(skills[groupName])[0]].name }}
           </p>
-          
-          <img class="image" :src="skillGroup[Object.keys(skillGroup)[0]].image" alt="test">
+          <img :src="skills[groupName][Object.keys(skills[groupName])[0]].image" alt="test">
         </div>
       </div>
-    </div>
 
+    </div>
     <RouterLink to="/skillset" class="link">
       <p>See More</p>
       <svg width="41" height="16" viewBox="0 0 41 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -62,11 +62,17 @@ const hoverIcon = ref<Record<string, boolean>>(
 .container {
   position: relative;
   width: 100%;
-  height: 100%;
+  
   border-radius: 20px;
   padding: 20px;
   overflow: hidden;
   z-index: 1;
+  @include mixins.mq('xs') {
+    height: fit-content;
+  }
+  @include mixins.mq('sm') {
+    height: auto;
+  }
 
   h2 {
     @include mixins.h2;
@@ -101,10 +107,15 @@ const hoverIcon = ref<Record<string, boolean>>(
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 70px;
       aspect-ratio: 1/1;
       border-radius: 10px;
       margin-top: 10px;
+      @include mixins.mq('xs') {
+        width: 60px;
+      }
+      @include mixins.mq('md') {
+        width: 70px;
+      }
 
       .content {
         display: flex;

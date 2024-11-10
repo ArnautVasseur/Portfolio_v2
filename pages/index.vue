@@ -19,7 +19,7 @@
       <p v-if="!isMobile" class="subtitle right-3">( and my favorite region is Sinnoh )</p>
     </div>
     <projects-preview class="projects"/>
-    <!-- <skillset-preview class="skillset"/> -->
+    <skillset-preview class="skillset"/>
     <!-- <aboutme_preview class="aboutMe"/> -->
   </div>
 </template>
@@ -55,14 +55,12 @@ onBeforeUnmount(() => {
 .homepage{
   width: 100%;
   height: 100%;
-  display: grid;
   @include mixins.mq('xs') {
-    grid-template-columns: 100%;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 10px;
     padding: 120px 20px 20px 20px;
   }
   @include mixins.mq('sm') {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 50% 50%;
     padding: 150px 40px 40px 40px;
     gap: 10px;
@@ -84,37 +82,41 @@ onBeforeUnmount(() => {
     gap: 40px;
     padding: 0px;
   }
-  grid-column-gap: 50px;
-  grid-row-gap: 50px;
 
   .presentation { 
     @include mixins.mq('xs') {
+    }
+    @include mixins.mq('sm') {
       grid-area: 1 / 1 / 2 / 3;
       margin-bottom: 50px;
     }
     @include mixins.mq('md') {
       grid-area: 1 / 1 / 2 / 2;
+      margin-bottom: 0px;
     }
     @include mixins.mq('lg') {
       grid-area: 1 / 1 / 2 / 3;
+      margin-bottom: 0px;
     }
     @include mixins.mq('xl') {
       grid-area: 1 / 1 / 2 / 3; 
+      margin-bottom: 0px;
     }
   }
 
   .projects { 
     @include mixins.mq('xs') {
-      grid-area: 2 / 1 / 3 / 2;
+      margin: 30px 0px;
     }
     @include mixins.mq('sm') {
       grid-area: 2 / 1 / 3 / 2;
+      margin: 0px;
     }
     @include mixins.mq('md') {
       
     }
     @include mixins.mq('lg') {
-      grid-area: 2 / 1 / 3 / 1;
+      grid-area: 2 / 1 / 4 / 1;
     }
     @include mixins.mq('xl') {
       grid-area: 2 / 1 / 3 / 1; 
@@ -123,10 +125,10 @@ onBeforeUnmount(() => {
 
   .skillset { 
     @include mixins.mq('xs') {
-      
+      grid-area: 3 / 1 / 4 / 2;
     }
     @include mixins.mq('sm') {
-      
+      grid-area: 2 / 2 / 3 / 3;
     }
     @include mixins.mq('md') {
       grid-area: 2 / 2 / 3 / 3;

@@ -113,7 +113,7 @@ function projectToolsWithImages(tools: string[]) {
   }
   @include mixins.mq('sm') {
     color: black;
-    height: auto;
+    height: 100%;
   }
 
   h2 {
