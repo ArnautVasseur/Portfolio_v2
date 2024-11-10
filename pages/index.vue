@@ -20,7 +20,8 @@
     </div>
     <projects-preview class="projects"/>
     <skillset-preview class="skillset"/>
-    <!-- <aboutme_preview class="aboutMe"/> -->
+    <aboutme_preview class="aboutMe"/>
+    <div class="spacer"></div>
   </div>
 </template>
 
@@ -54,16 +55,19 @@ onBeforeUnmount(() => {
 
 .homepage{
   width: 100%;
-  height: 100%;
+  
+  
   @include mixins.mq('xs') {
     padding: 120px 20px 20px 20px;
+    min-height: calc(100vh + 80px);
   }
   @include mixins.mq('sm') {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: max-content 1fr 1fr;
     grid-template-columns: 50% 50%;
     padding: 150px 40px 40px 40px;
     gap: 10px;
+    min-height: auto;
   }
   @include mixins.mq('md') {
     grid-template-columns: 1fr 1fr;
@@ -113,7 +117,7 @@ onBeforeUnmount(() => {
       margin: 0px;
     }
     @include mixins.mq('md') {
-      
+      grid-area: 2 / 1 / 4 / 2;
     }
     @include mixins.mq('lg') {
       grid-area: 2 / 1 / 4 / 1;
@@ -126,12 +130,14 @@ onBeforeUnmount(() => {
   .skillset { 
     @include mixins.mq('xs') {
       grid-area: 3 / 1 / 4 / 2;
+      margin: 30px 0px;
     }
     @include mixins.mq('sm') {
       grid-area: 2 / 2 / 3 / 3;
+      margin: 0px;
     }
     @include mixins.mq('md') {
-      grid-area: 2 / 2 / 3 / 3;
+      grid-area: 2 / 2 / 4 / 3;
     }
     @include mixins.mq('lg') {
       grid-area: 2 / 2 / 4 / 3;
@@ -143,10 +149,11 @@ onBeforeUnmount(() => {
   
   .aboutMe { 
     @include mixins.mq('xs') {
-      
+
     }
     @include mixins.mq('sm') {
-      
+      grid-area: 3 / 1 / 4 / 3;
+      margin: 0px;
     }
     @include mixins.mq('md') {
       grid-area: 1 / 2 / 2 / 3;
@@ -239,7 +246,17 @@ onBeforeUnmount(() => {
         width: 80px;
       }
     }
-  }  
+  } 
+  
+  .spacer {
+    height: 110px;
+    @include mixins.mq("sm") {
+      height: 90px;
+    }
+    @include mixins.mq("md") {
+      display: none;
+    }
+  }
 }
 
 .background-icon{

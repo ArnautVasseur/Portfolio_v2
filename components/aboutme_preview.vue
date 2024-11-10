@@ -58,6 +58,10 @@ import { AboutmePreview } from '../.nuxt/components';
 <style scoped lang="scss">
 .container {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   border-radius: 20px;
   padding: 20px;
@@ -91,7 +95,6 @@ import { AboutmePreview } from '../.nuxt/components';
       }
 
       .content{
-        width: 100%;
         height: auto;
         border-radius: 10px;
         padding: 25px;
@@ -109,8 +112,6 @@ import { AboutmePreview } from '../.nuxt/components';
 
         p{
           font-size: 14px;
-          font-style: normal;
-          font-weight: 400;
           line-height: normal;
         }
       }
@@ -120,12 +121,9 @@ import { AboutmePreview } from '../.nuxt/components';
   
 
   .link {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    max-width: fit-content;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
     color: white;
     gap: 10px;

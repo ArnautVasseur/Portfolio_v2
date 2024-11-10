@@ -201,7 +201,7 @@ const leave = () => {
   }
 
   .dropdown-menu {
-    position: absolute;
+    position: fixed;
     max-width: fit-content;
     top: 50%;
     left: 50%;
@@ -216,11 +216,17 @@ const leave = () => {
       padding: 0;
       margin: 0;
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
       gap: 15px;
       justify-items: center;
       align-items: center;
       place-items: center;
+
+      @include mixins.mq('xs'){
+        grid-template-columns: repeat(3, 1fr);
+      }
+      @include mixins.mq('sm'){
+        grid-template-columns: repeat(6, 1fr);
+      }
     }
   }
 }

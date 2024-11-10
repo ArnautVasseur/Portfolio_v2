@@ -101,6 +101,7 @@ function projectToolsWithImages(tools: string[]) {
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 15px;
   border-radius: 20px;
   padding: 20px;
@@ -141,8 +142,7 @@ function projectToolsWithImages(tools: string[]) {
     }
     @include mixins.mq('sm') {
       background-color: inherit;
-      
-      height: 80%;
+      height: 100%;
     }
 
     .logo, .content {

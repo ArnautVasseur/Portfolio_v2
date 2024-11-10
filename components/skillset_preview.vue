@@ -60,9 +60,11 @@ const hoverIcon = ref<Record<string, boolean>>(
 
 <style scoped lang="scss">
 .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: relative;
   width: 100%;
-  
   border-radius: 20px;
   padding: 20px;
   overflow: hidden;
@@ -71,22 +73,25 @@ const hoverIcon = ref<Record<string, boolean>>(
     height: fit-content;
   }
   @include mixins.mq('sm') {
-    height: auto;
+    height: 100%;
   }
 
   h2 {
-    @include mixins.h2;
-    height: 5%;
+    color: white;
+
+    @include mixins.mq('xs') {
+      font-size: 18px;
+    }
+
+    @include mixins.mq('sm') {
+      font-size: 20px;
+    }
   }
 
   .link {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    height: 5%;
-    max-width: fit-content;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
     color: white;
     gap: 10px;
@@ -114,7 +119,7 @@ const hoverIcon = ref<Record<string, boolean>>(
         width: 60px;
       }
       @include mixins.mq('md') {
-        width: 70px;
+        width: 80px;
       }
 
       .content {
