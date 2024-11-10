@@ -87,9 +87,7 @@ onBeforeUnmount(() => {
     padding: 0px;
   }
 
-  .presentation { 
-    @include mixins.mq('xs') {
-    }
+  .presentation {
     @include mixins.mq('sm') {
       grid-area: 1 / 1 / 2 / 3;
       margin-bottom: 50px;
@@ -147,13 +145,9 @@ onBeforeUnmount(() => {
     }
   }
   
-  .aboutMe { 
-    @include mixins.mq('xs') {
-
-    }
+  .aboutMe {
     @include mixins.mq('sm') {
       grid-area: 3 / 1 / 4 / 3;
-      margin: 0px;
     }
     @include mixins.mq('md') {
       grid-area: 1 / 2 / 2 / 3;

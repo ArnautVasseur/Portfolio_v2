@@ -2,8 +2,8 @@ import { AboutmePreview } from '../.nuxt/components';
 <template>
   <div class="container">
     <div class="content">
-      <img class="picture" src="/public/images/picture.jpg" alt="myself">
-      <IconGym size="50px" color="white" class="gym_icon"/>
+      <img v-if="!isIpad && !isMobile" class="picture" src="/public/images/picture.jpg" alt="myself">
+      <IconGym v-if="!isIpad && !isMobile" size="50px" color="white" class="gym_icon"/>
 
       <div class="introduction">
         <h3>Introduction</h3>
@@ -12,8 +12,8 @@ import { AboutmePreview } from '../.nuxt/components';
         </div>
       </div>
 
-      <div class="contact_me">
-        <h3>Contact me</h3>
+      <div v-if="!isIpad" class="contact_me">
+        <h3 v-if="!isMobile">Contact me</h3>
         <div class="content">
           <div class="mail">
             <svg class="icon" width="40" height="40" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,6 +55,27 @@ import { AboutmePreview } from '../.nuxt/components';
   </div>
 </template>
 
+<script setup lang="ts">
+const isIpad = ref(false);
+const isMobile = ref(false);
+
+function updateSize() {
+  const screenWidth = window.innerWidth;
+  isMobile.value = screenWidth <= 768;
+  isIpad.value = screenWidth >= 769 && screenWidth <= 1024;
+}
+
+onMounted(() => {
+  updateSize();
+  window.addEventListener('resize', updateSize);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', updateSize);
+});
+
+</script>
+
 <style scoped lang="scss">
 .container {
   position: relative;
@@ -75,6 +96,14 @@ import { AboutmePreview } from '../.nuxt/components';
     flex-direction: column;
     align-items: center;
 
+    @include mixins.mq('sm'){
+      flex-direction: row;
+      gap: 25px;
+    }
+    @include mixins.mq('md'){
+      flex-direction: column;
+    }
+
     .gym_icon{
       position: absolute;
       top: 20px;
@@ -88,10 +117,11 @@ import { AboutmePreview } from '../.nuxt/components';
 
     .introduction, .contact_me{
       width: 100%;
+      margin: 10px 0px;
       
       h3{
         color: white;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
       }
 
       .content{
