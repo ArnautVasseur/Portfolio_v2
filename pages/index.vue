@@ -37,7 +37,7 @@ const hoveredIcon = ref<string | null>(null);
 
 function updateIconSize() {
   const screenWidth = window.innerWidth;
-  isMobile.value = screenWidth <= 768
+  isMobile.value = screenWidth <= 1024
 }
 
 onMounted(() => {

@@ -76,7 +76,7 @@ function updateIconSize() {
   } else {
     iconSize.value = '2.5rem';
   }
-  isMobile.value = screenWidth <= 768
+  isMobile.value = screenWidth <= 1024
 }
 
 onMounted(() => {
