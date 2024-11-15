@@ -2,162 +2,183 @@
     "Hard_Skills":{
 
         "Front-End":{
+            "categoryImage": "icon_front-end",
+            "skills": {
+                "VueJS":{
+                    "name": "VueJS",
+                    "proficiency": 95,
+                    "image": "/icons/VueJS.svg"
+                },
 
-            "VueJS":{
-                "name": "VueJS",
-                "proficiency": 95,
-                "image": "/icons/VueJS.svg"
-            },
+                "NuxtJS":{
+                    "name": "NuxtJS",
+                    "proficiency": 90,
+                    "image": "/icons/NuxtJS.svg"
+                },
 
-            "NuxtJS":{
-                "name": "NuxtJS",
-                "proficiency": 90,
-                "image": "/icons/NuxtJS.svg"
-            },
+                "chartJS":{
+                    "name": "chartJS",
+                    "proficiency": 80,
+                    "image": "/icons/ChartJS.svg"
+                },
 
-            "chartJS":{
-                "name": "chartJS",
-                "proficiency": 80,
-                "image": "/icons/ChartJS.svg"
-            },
+                "JavaScript":{
+                    "name": "Javascript",
+                    "proficiency": 70,
+                    "image": "/icons/JavaScript.svg"
+                },
 
-            "JavaScript":{
-                "name": "Javascript",
-                "proficiency": 70,
-                "image": "/icons/JavaScript.svg"
-            },
+                "TypeScript":{
+                    "name": "TypeScript",
+                    "proficiency": 40,
+                    "image": "/icons/TypeScript.svg"
+                },
 
-            "TypeScript":{
-                "name": "TypeScript",
-                "proficiency": 40,
-                "image": "/icons/TypeScript.svg"
-            },
+                "Sass":{
+                    "name": "Sass",
+                    "proficiency": 85,
+                    "image": "/icons/Sass.svg"
+                },
 
-            "Sass":{
-                "name": "Sass",
-                "proficiency": 85,
-                "image": "/icons/Sass.svg"
-            },
+                "Tailwind":{
+                    "name": "Tailwind",
+                    "proficiency": 95,
+                    "image": "/icons/Tailwind.svg"
+                },
 
-            "Tailwind":{
-                "name": "Tailwind",
-                "proficiency": 95,
-                "image": "/icons/Tailwind.svg"
-            },
+                "Pinia":{
+                    "name": "Pinia",
+                    "proficiency": 80,
+                    "image": "/icons/Pinia.svg"
+                },
 
-            "Pinia":{
-                "name": "Pinia",
-                "proficiency": 80,
-                "image": "/icons/Pinia.svg"
-            },
-
-            "ThreeJS":{
-                "name": "ThreeJS",
-                "proficiency": 35,
-                "image": "/icons/ThreeJS.svg"
+                "ThreeJS":{
+                    "name": "ThreeJS",
+                    "proficiency": 35,
+                    "image": "/icons/ThreeJS.svg"
+                }
             }
+            
             
         },
 
         "Back-End":{
+            "categoryImage": "icon_back-end",
+            "skills": {
+                "Python":{
+                    "name": "Python",
+                    "proficiency": 80,
+                    "image": "/icons/Python.svg"
+                },
 
-            "Python":{
-                "name": "Python",
-                "proficiency": 80,
-                "image": "/icons/Python.svg"
-            },
-
-            "NodeJS":{
-                "name": "NodeJS",
-                "proficiency": 50,
-                "image": "/icons/NodeJS.svg"
+                "NodeJS":{
+                    "name": "NodeJS",
+                    "proficiency": 50,
+                    "image": "/icons/NodeJS.svg"
+                }
             }
+            
 
             
         },
 
         "UI/UX":{
-            "Figma":{
-                "name": "Figma",
-                "proficiency": 75,
-                "image": "/icons/Figma.svg"
+            "categoryImage": "icon_ui-ux",
+            "skills": {
+                "Figma":{
+                    "name": "Figma",
+                    "proficiency": 75,
+                    "image": "/icons/Figma.svg"
+                }
             }
+            
         },
 
         "Database":{
-            "SQL":{
-                "name": "SQL",
-                "proficiency": 75,
-                "image": "/icons/SQL.svg"
-            },
+            "categoryImage": "icon_database",
+            "skills": {
+                "SQL":{
+                    "name": "SQL",
+                    "proficiency": 75,
+                    "image": "/icons/SQL.svg"
+                },
 
-            "MySQL":{
-                "name": "MySQL",
-                "proficiency": 90,
-                "image": "/icons/MySQL.svg"
-            },
+                "MySQL":{
+                    "name": "MySQL",
+                    "proficiency": 90,
+                    "image": "/icons/MySQL.svg"
+                },
 
-            "SQLite":{
-                "name": "SQLite",
-                "proficiency": 60,
-                "image": "/icons/SQLite.svg"
-            },
+                "SQLite":{
+                    "name": "SQLite",
+                    "proficiency": 60,
+                    "image": "/icons/SQLite.svg"
+                },
 
-            "Supabase":{
-                "name": "SQL",
-                "proficiency": 75,
-                "image": "/icons/Supabase.svg"
-            },
+                "Supabase":{
+                    "name": "SQL",
+                    "proficiency": 75,
+                    "image": "/icons/Supabase.svg"
+                },
 
-            "Firebase":{
-                "name": "Firebase",
-                "proficiency": 70,
-                "image": "/icons/Firebase.svg"
+                "Firebase":{
+                    "name": "Firebase",
+                    "proficiency": 70,
+                    "image": "/icons/Firebase.svg"
+                }
             }
+            
         },
 
         "CMS":{
-
-            "WordPress":{
-                "name": "Wordpress",
-                "proficiency": 55,
-                "image": "/icons/Wordpress.svg"
+            "categoryImage": "icon_cms",
+            "skills": {
+                "WordPress":{
+                    "name": "Wordpress",
+                    "proficiency": 55,
+                    "image": "/icons/Wordpress.svg"
+                }
             }
+            
         },
 
-        "ProjectManagement":{
+        "Management":{
+            "categoryImage": "icon_management",
+            "skills": {
+                "Github":{
+                    "name": "Github",
+                    "proficiency": 95,
+                    "image": "/icons/Github.svg"
+                },
 
-            "Github":{
-                "name": "Github",
-                "proficiency": 95,
-                "image": "/icons/Github.svg"
-            },
+                "Git":{
+                    "name": "Git",
+                    "proficiency": 60,
+                    "image": "/icons/Git.svg"
+                },
 
-            "Git":{
-                "name": "Git",
-                "proficiency": 60,
-                "image": "/icons/Git.svg"
-            },
+                "Trello":{
+                    "name": "Trello",
+                    "proficiency": 85,
+                    "image": "/icons/Trello.svg"
+                },
 
-            "Trello":{
-                "name": "Trello",
-                "proficiency": 85,
-                "image": "/icons/Trello.svg"
-            },
-
-            "Notion":{
-                "name": "Notion",
-                "proficiency": 80,
-                "image": "/icons/Notion.svg"
+                "Notion":{
+                    "name": "Notion",
+                    "proficiency": 80,
+                    "image": "/icons/Notion.svg"
+                }
             }
         },
 
         "Others":{
-
-            "Unreal Engine":{
-                "name": "Unreal Engine",
-                "proficiency": 65,
-                "image": "/icons/UnrealEngine.svg"
+            "categoryImage": "icon_others",
+            "skills": {
+                "Unreal Engine":{
+                    "name": "Unreal Engine",
+                    "proficiency": 65,
+                    "image": "/icons/UnrealEngine.svg"
+                }
             }
         }
     }

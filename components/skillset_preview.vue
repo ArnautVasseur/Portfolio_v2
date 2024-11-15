@@ -5,21 +5,21 @@
     <div class="skillset">
       <div
         v-if="skills && Object.keys(skills).length > 0"
-        v-for="(groupName, index) in Object.keys(skills).slice(0, 6)"
+        v-for="([groupName, group], index) in Object.entries(skills).slice(0, 6)" 
         :key="groupName"
         class="skill"
         @mouseenter="hoverIcon[groupName] = true"
         @mouseleave="hoverIcon[groupName] = false"
       >
-        <div v-if="skills[groupName] && Object.keys(skills[groupName]).length > 0" class="content">
+        <div v-if="group && Object.keys(group.skills).length > 0" class="content">
           <p class="text">
-            {{ skills[groupName][Object.keys(skills[groupName])[0]].name }}
+            {{ group.skills[Object.keys(group.skills)[0]].name }}
           </p>
-          <img :src="skills[groupName][Object.keys(skills[groupName])[0]].image" alt="test">
+          <img :src="group.skills[Object.keys(group.skills)[0]].image" alt="test" />
         </div>
       </div>
-
     </div>
+
     <RouterLink to="/skillset" class="link">
       <p>See More</p>
       <svg width="41" height="16" viewBox="0 0 41 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -44,11 +44,14 @@ interface Skill {
 }
 
 interface SkillGroup {
-  [skillName: string]: Skill;
+  categoryImage: string;  // New field for category image
+  skills: {               // Group contains skills in a "skills" object
+    [skillName: string]: Skill;
+  };
 }
 
 interface SkillsData {
-  [groupName: string]: SkillGroup;
+  [groupName: string]: SkillGroup; // SkillsData holds skill groups
 }
 
 const skills: SkillsData = Skills.Hard_Skills;

@@ -44,7 +44,6 @@
 import Projects from "../json/projects.json";
 import Skills from "../json/skills.json";
 
-// Define a Project interface
 interface Project {
   name: string;
   category: string;
@@ -58,14 +57,31 @@ interface Project {
   image: string;
 }
 
-// Define a Skills lookup type
+interface Skill {
+  name: string;
+  proficiency: number;
+  image: string;
+}
+
+interface SkillGroup {
+  categoryImage: string;
+  skills: { [skillName: string]: Skill };
+}
+
 interface SkillLookup {
-  [key: string]: string; // Mapping tool names to image paths
+  [key: string]: string;
 }
 
 const projects: Record<string, Project> = Projects.Projects;
 
-// Find the latest project based on the creation date
+const skills: SkillLookup = {};
+
+Object.values(Skills.Hard_Skills).forEach((group: SkillGroup) => {
+  Object.values(group.skills).forEach((tool: Skill) => {
+    skills[tool.name] = tool.image;
+  });
+});
+
 const LastProject = Object.values(projects).reduce<Project | null>((latest, current) => {
   const currentDateParts = current["creation-date"].split("-");
   const currentDate = new Date(+currentDateParts[1], +currentDateParts[0] - 1);
@@ -78,22 +94,14 @@ const LastProject = Object.values(projects).reduce<Project | null>((latest, curr
   return currentDate > latestDate ? current : latest;
 }, null);
 
-// Initialize skills as a dictionary with type `SkillLookup`
-const skills: SkillLookup = {};
-Object.values(Skills.Hard_Skills).forEach(category => {
-  Object.values(category).forEach(tool => {
-    skills[tool.name.toLowerCase()] = tool.image;
-  });
-});
-
-// Function to get tools with images for a project
 function projectToolsWithImages(tools: string[]) {
   return tools.map(tool => ({
     name: tool,
-    image: skills[tool.toLowerCase()]
+    image: skills[tool]
   }));
 }
 </script>
+
 
 <style scoped lang="scss">
 .container {
