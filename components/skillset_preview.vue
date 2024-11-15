@@ -114,7 +114,6 @@ const hoverIcon = ref<Record<string, boolean>>(
       align-items: center;
       aspect-ratio: 1/1;
       border-radius: 10px;
-      margin-top: 10px;
       @include mixins.mq('xs') {
         width: 60px;
       }
@@ -131,6 +130,7 @@ const hoverIcon = ref<Record<string, boolean>>(
         font-size: 14px;
         text-align: center;
         position: relative;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
         p, img {
           position: absolute;

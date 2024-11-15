@@ -47,6 +47,7 @@ $mode-colors: (
   @each $mode, $color in $mode-colors_bg {
     .#{$mode}-mode body, 
     .#{$mode}-mode .skill, 
+    .#{$mode}-mode .category-item, 
     .#{$mode}-mode .project, 
     .#{$mode}-mode .introduction .content, 
     .#{$mode}-mode .contact_me > .content {
@@ -70,6 +71,7 @@ $mode-colors: (
   @each $mode, $color in $mode-colors {
     .#{$mode}-mode .container, 
     .#{$mode}-mode .dropdown-menu, 
+    .#{$mode}-mode .progress, 
     .#{$mode}-mode .icon_bg {
       background-color: $color;
       transition: all 0.3s ease-in-out;
