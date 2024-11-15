@@ -19,6 +19,12 @@
     </div>
 
     <div class="skills container">
+      <component 
+        v-if="selectedCategory" 
+        :is="sortedSkills[selectedCategory]?.categoryImage" 
+        class="category-icon" 
+      />
+
       <div v-if="selectedCategory" class="skills-grid">
         <div v-for="skill in sortedSkills[selectedCategory].skills" :key="skill.name" class="skill">
           <h3>{{ skill.name }}</h3>
@@ -170,10 +176,13 @@ onMounted(fetchSkills);
   }
 
   .skills {
+    position: relative;
     width: 80%;
     padding: 30px;
     border-radius: 20px;
     color: black;
+    overflow: hidden;
+    z-index: 2;
 
     .skills-grid {
       display: flex;
@@ -181,40 +190,53 @@ onMounted(fetchSkills);
       align-items: center;
       flex-wrap: wrap;
       gap: 20px;
-    }
 
-    .skill {
-      width: 150px;
-      aspect-ratio: 1/1;
-      padding: 15px;
-      text-align: center;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-      img {
-        width: 50px;
-        height: 50px;
+      .skill {
+        width: 150px;
         aspect-ratio: 1/1;
-        height: auto;
-      }
+        padding: 15px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-      .skill-info {
-        margin-top: 10px;
+        img {
+          width: 50px;
+          height: 50px;
+          aspect-ratio: 1/1;
+          height: auto;
+        }
 
-        .progress-bar {
-          height: 8px;
-          width: 100%;
-          background: white;
-          border-radius: 4px;
-          margin-top: 5px;
-          overflow: hidden;
+        .skill-info {
+          margin-top: 10px;
 
-          .progress {
-            height: 100%;
+          .progress-bar {
+            height: 8px;
+            width: 100%;
+            background: white;
+            border-radius: 4px;
+            margin-top: 5px;
+            overflow: hidden;
+
+            .progress {
+              height: 100%;
+            }
           }
         }
       }
     }
+
+    .category-icon{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 300px;
+      height: 300px;
+      transform: rotate(15deg);
+      opacity: 30%;
+      z-index: -1;
+      filter: invert(100%);
+    }
+    
   }
 }
 </style>
