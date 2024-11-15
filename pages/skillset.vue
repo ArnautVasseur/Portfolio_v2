@@ -11,6 +11,7 @@
           
           <h2>{{ category }}</h2>
           <component 
+            v-if="!isMobile"
             :is="categoryData.categoryImage" 
             class="category-icon" 
           />
@@ -39,6 +40,7 @@
       </div>
       <p v-else>Select a category to view its skills</p>
     </div>
+    <div class="spacer"></div>
   </div>
 </template>
 
@@ -132,25 +134,66 @@ const selectCategory = (category: string) => {
 
 // Fetch skills data when the component is mounted
 onMounted(fetchSkills);
+
+const isMobile = ref(false);
+
+function updateIconSize() {
+  const screenWidth = window.innerWidth;
+  isMobile.value = screenWidth <= 1024
+}
+
+onMounted(() => {
+  updateIconSize();
+  window.addEventListener('resize', updateIconSize);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', updateIconSize);
+});
 </script>
 
 <style scoped lang="scss">
 .skills-page {
   display: flex;
-  gap: 50px;
   width: 100%;
+  
+  @include mixins.mq('xs') {
+    flex-direction: column;
+    padding: 20px;
+    gap: 30px;
+  }
+  @include mixins.mq('md') {
+    flex-direction: row;
+    padding: 0px;
+    gap: 50px;
+  }
 
   .category-section {
-    width: 20%;
     padding: 20px;
     border-radius: 20px;
     color: white;
 
+    @include mixins.mq('xs') {
+      width: 100%;
+    }
+    @include mixins.mq('md') {
+      width: 20%;
+    }
+
     .categories {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
       justify-content: space-around;
+      width: 100%;
       height: 100%;
+
+      @include mixins.mq('xs') {
+        flex-direction: row;
+        gap: 20px;
+      }
+      @include mixins.mq('md') {
+        flex-direction: column;
+      }
 
       .category-item {
         display: flex;
@@ -167,6 +210,10 @@ onMounted(fetchSkills);
           transform: scale(1.05);
         }
 
+        &:hover {
+          transform: scale(1.05);
+        }
+
         .category-icon {
           width: 30px;
           height: 30px;
@@ -177,12 +224,22 @@ onMounted(fetchSkills);
 
   .skills {
     position: relative;
-    width: 80%;
     padding: 30px;
     border-radius: 20px;
     color: black;
     overflow: hidden;
-    z-index: 2;
+
+    @include mixins.mq('xs') {
+      width: 100%;
+      height: fit-content;
+      z-index: 0;
+    }
+    @include mixins.mq('md') {
+      width: 80%;
+      height: auto;
+      z-index: 2;
+      overflow: hidden;
+    }
 
     .skills-grid {
       display: flex;
@@ -192,12 +249,18 @@ onMounted(fetchSkills);
       gap: 20px;
 
       .skill {
-        width: 150px;
         aspect-ratio: 1/1;
         padding: 15px;
         text-align: center;
         border-radius: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        @include mixins.mq('xs') {
+          width: 125px;
+        }
+        @include mixins.mq('sm') {
+          width: 150px;
+        }
 
         img {
           width: 50px;
@@ -236,7 +299,15 @@ onMounted(fetchSkills);
       z-index: -1;
       filter: invert(100%);
     }
-    
+  }
+
+  .spacer{
+    @include mixins.mq('xs') {
+      height: 80px;
+    }
+    @include mixins.mq('sm') {
+      height: 0px;
+    }
   }
 }
 </style>

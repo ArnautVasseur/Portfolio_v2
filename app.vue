@@ -10,7 +10,7 @@ import { Dragon } from './.nuxt/components';
 
 .main{
   width: 100%;
-  height: 100vh;
+  min-height: 100dvh;
   @include mixins.mq('xs') {
     padding: 0px;
     gap: 20px;
@@ -22,6 +22,7 @@ import { Dragon } from './.nuxt/components';
   @include mixins.mq('md') {
     padding: 30px;
     gap: 30px;
+    height: 100vh;
   }
   @include mixins.mq('lg') {
     padding: 40px;
