@@ -1,5 +1,27 @@
 <template>
   <div class="skills-page">
+    <div class="skills container">
+      <component 
+      v-if="selectedCategory" 
+      :is="sortedSkills[selectedCategory]?.categoryImage" 
+      class="category-icon" 
+      />
+      
+      <div v-if="selectedCategory" class="skills-grid">
+        <div v-for="skill in sortedSkills[selectedCategory].skills" :key="skill.name" class="skill">
+          <h3>{{ skill.name }}</h3>
+          <div class="skill-info">
+            <img :src="skill.image" :alt="skill.name" />
+            <p>Proficiency: {{ skill.proficiency }}%</p>
+            <div class="progress-bar">
+              <div class="progress" :style="{ width: skill.proficiency + '%' }"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p v-else>Select a category to view its skills</p>
+    </div>
+
     <div class="category-section container">
       <div class="categories">
         <div 
@@ -17,28 +39,6 @@
           />
         </div>
       </div>
-    </div>
-
-    <div class="skills container">
-      <component 
-        v-if="selectedCategory" 
-        :is="sortedSkills[selectedCategory]?.categoryImage" 
-        class="category-icon" 
-      />
-
-      <div v-if="selectedCategory" class="skills-grid">
-        <div v-for="skill in sortedSkills[selectedCategory].skills" :key="skill.name" class="skill">
-          <h3>{{ skill.name }}</h3>
-          <div class="skill-info">
-            <img :src="skill.image" :alt="skill.name" />
-            <p>Proficiency: {{ skill.proficiency }}%</p>
-            <div class="progress-bar">
-              <div class="progress" :style="{ width: skill.proficiency + '%' }"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <p v-else>Select a category to view its skills</p>
     </div>
     <div class="spacer"></div>
   </div>
@@ -237,7 +237,7 @@ onBeforeUnmount(() => {
     @include mixins.mq('md') {
       width: 80%;
       height: auto;
-      z-index: 2;
+      z-index: 1;
       overflow: hidden;
     }
 
@@ -306,6 +306,7 @@ onBeforeUnmount(() => {
       height: 80px;
     }
     @include mixins.mq('sm') {
+      display: none;
       height: 0px;
     }
   }
