@@ -48,7 +48,8 @@ $mode-colors: (
     .#{$mode}-mode body, 
     .#{$mode}-mode .skill, 
     .#{$mode}-mode .category-item, 
-    .#{$mode}-mode .project, 
+    .#{$mode}-mode .project,
+    .#{$mode}-mode .small-container,
     .#{$mode}-mode .introduction .content, 
     .#{$mode}-mode .contact_me > .content {
       background-color: $color;

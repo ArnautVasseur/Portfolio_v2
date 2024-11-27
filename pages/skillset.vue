@@ -1,6 +1,9 @@
 <template>
   <div class="skills-page">
+    <div class="spacer"></div>
     <div class="skills container">
+      <h2>Skillset: <span>{{selectedCategory}}</span></h2>
+
       <component 
       v-if="selectedCategory" 
       :is="sortedSkills[selectedCategory]?.categoryImage" 
@@ -40,7 +43,7 @@
         </div>
       </div>
     </div>
-    <div class="spacer"></div>
+    
   </div>
 </template>
 
@@ -156,13 +159,17 @@ onBeforeUnmount(() => {
 .skills-page {
   display: flex;
   width: 100%;
+  justify-content: space-between;
   
   @include mixins.mq('xs') {
-    flex-direction: column;
+    height: fit-content;
+    flex-direction: column-reverse;
     padding: 20px;
     gap: 30px;
   }
+  
   @include mixins.mq('md') {
+    height: auto;
     flex-direction: row;
     padding: 0px;
     gap: 50px;
@@ -239,6 +246,12 @@ onBeforeUnmount(() => {
       height: auto;
       z-index: 1;
       overflow: hidden;
+    }
+
+    h2{
+      color: white;
+      font-size: 32px;
+      margin-bottom: 30px;
     }
 
     .skills-grid {

@@ -13,11 +13,11 @@
             "tools":[
                 "NuxtJS",
                 "Sass",
-                "Figma",
-                "Github",
-                "ChartJS"
+                "ChartJS",
+                "NodeJS",
+                "Github"
             ],
-            "description": "test",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin varius mattis pretium. Donec tempor eros at iaculis semper. Etiam ornare, ante id venenatis fermentum, ligula velit convallis risus, vel dignissim diam enim id elit. Pellentesque viverra nulla sit amet sollicitudin euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse condimentum justo felis, eget consectetur est iaculis vitae. Aliquam nec aliquet felis.",
             "link": "https://github.com/ArnautVasseur/Portfolio_v2",
             "website": "test_link",
             "image": "/projects_images/portfolio.jpg"
