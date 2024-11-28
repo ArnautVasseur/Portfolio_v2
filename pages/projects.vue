@@ -19,32 +19,33 @@
 
         <div class="project_content">
 
-          <img class="project_image" :src="selectedProjectDetails.image" alt="Project_Image">
+          <div class="project_desc">
+            <img class="project_image" :src="selectedProjectDetails.image" alt="Project_Image">
+            <p>{{ selectedProjectDetails.description }}</p>
+          </div>
 
-          <div class="project_tools small-container">
-            <div v-for="tool in toolDetails" :key="tool.name" class="tool-item">
-              <img :src="tool.image" :alt="tool.name" class="tool-icon" />
-              <p class="tool-name">{{ tool.name }}</p>
+          <div class="project_carac">
+            <div class="project_tools small-container">
+              <div v-for="tool in toolDetails" :key="tool.name" class="tool-item">
+                <img :src="tool.image" :alt="tool.name" class="tool-icon" />
+                <p class="tool-name">{{ tool.name }}</p>
+              </div>
+            </div>
+
+            <div class="project_links small-container">
+              <a :href="selectedProjectDetails.link">
+                <p>Github</p>
+              </a>
+    
+              <a :href="selectedProjectDetails.website">
+                <p>Website</p>
+              </a>
             </div>
           </div>
 
         </div>
 
-        <div class="project_footer">
-          <div class="project_detail">
-            <p>{{ selectedProjectDetails.description }}</p>
-          </div>
         
-          <div class="project_links small-container">
-            <a href="">
-              <p>Link to the Github Project</p>
-            </a>
-
-            <a href="">
-              <p>Visit the website</p>
-            </a>
-          </div>
-        </div>
 
       </div>
       <p v-else>Select a project to view its details</p>
@@ -205,6 +206,7 @@ onMounted(() => {
 
       .project_header{
         width: 100%;
+        height: 15%;
         overflow-y: visible;
         display: flex;
         justify-content: space-between;
@@ -232,43 +234,70 @@ onMounted(() => {
       }
 
       .project_content{
+        width: 100%;
+        height: 85%;
         display: flex;
         justify-content: space-between;
         align-items: start;
-        gap: 20px;
-        height: 55%;
 
-        .project_image {
-          border-radius: 15px;
-          max-height: 100%;
+        .project_desc{
+          width: 80%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 30px;
+
+          .project_image {
+            border-radius: 15px;
+            width: 100%;
+          }
         }
 
-        .project_tools{
-          width: 100%;
-          max-height: 100%;
-          color: black;
-          border-radius: 15px;
-          padding: 20px;
-          overflow-y: scroll;
+        .project_carac{
+          width: 15%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
 
-          .tool-item{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            padding: 20px 10px;
-            border-bottom: 1px solid black;
+          .project_tools{
+            width: 100%;
+            height: 75%;
+            color: black;
+            border-radius: 15px;
+            padding: 20px;
+            overflow-y: scroll;
 
-            .tool-icon{
-              height: 50px;
-              aspect-ratio: 1/1;
+            .tool-item{
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              flex-wrap: wrap;
+              padding: 20px 10px;
+              border-bottom: 1px solid black;
+
+              .tool-icon{
+                height: 50px;
+                aspect-ratio: 1/1;
+              }
+            }
+
+            .tool-item:first-child{
+              border-top: 1px solid black;
+              border-bottom: 1px solid black;
             }
           }
 
-          .tool-item:first-child{
-            border-top: 1px solid black;
-            border-bottom: 1px solid black;
+          .project_links{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            border-radius: 15px;
+            width: 100%;
+            padding: 20px;
           }
         }
 
@@ -278,28 +307,7 @@ onMounted(() => {
 
       }
 
-      .project_footer{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        .project_detail{
-          max-width: 70%;
-        }
-
-        .project_links{
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          gap: 20px;
-          border-radius: 15px;
-          max-width: 30%;
-          padding: 20px;
-        }
-      }
+      
       
     }
   }
