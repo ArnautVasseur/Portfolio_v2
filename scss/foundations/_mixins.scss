@@ -1,8 +1,13 @@
 @use "./variables" as variables;
 
-@mixin h2{
-    color: white;
-    font-size: 24px;
+@mixin box{
+  border-radius: 20px;
+  filter: drop-shadow(4px 6px rgba(0,0,0,0.1));
+}
+
+@mixin small-box{
+  border-radius: 15px;
+  filter: drop-shadow(4px 6px rgba(0,0,0,0.1));
 }
 
 // breakpoints responsive design

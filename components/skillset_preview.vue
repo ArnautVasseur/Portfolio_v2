@@ -68,8 +68,8 @@ const hoverIcon = ref<Record<string, boolean>>(
   justify-content: space-between;
   position: relative;
   width: 100%;
-  border-radius: 20px;
   padding: 20px;
+  border-radius: 20px;
   overflow: hidden;
   z-index: 1;
   @include mixins.mq('xs') {
@@ -116,7 +116,7 @@ const hoverIcon = ref<Record<string, boolean>>(
       justify-content: center;
       align-items: center;
       aspect-ratio: 1/1;
-      border-radius: 10px;
+      @include mixins.small-box;
       @include mixins.mq('xs') {
         width: 60px;
       }

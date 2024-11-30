@@ -142,7 +142,7 @@ function projectToolsWithImages(tools: string[]) {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
+    @include mixins.small-box;
     padding: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 

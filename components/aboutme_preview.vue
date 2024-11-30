@@ -113,6 +113,7 @@ onBeforeUnmount(() => {
 
     .picture{
       border-radius: 50%;
+      filter: drop-shadow(4px 6px rgba(0,0,0,0.1));
       width: 75px;
     }
 
@@ -127,7 +128,7 @@ onBeforeUnmount(() => {
 
       .content{
         height: auto;
-        border-radius: 10px;
+        @include mixins.small-box;
         padding: 25px;
         display: flex;
         flex-direction: column;

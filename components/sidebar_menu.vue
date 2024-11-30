@@ -112,7 +112,7 @@ onBeforeUnmount(() => {
     height: 100px;
   }
   @include mixins.mq("md") {
-    position: inherit;
+    position: relative;
     width: 130px;
     height: 100%;
     border-radius: 20px;
