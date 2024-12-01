@@ -72,7 +72,7 @@ $mode-colors: (
   @each $mode, $color in $mode-colors {
     .#{$mode}-mode .container, 
     .#{$mode}-mode .dropdown-menu, 
-    .#{$mode}-mode .progress, 
+    .#{$mode}-mode .progress,
     .#{$mode}-mode .icon_bg {
       background-color: $color;
       transition: all 0.3s ease-in-out;
@@ -83,8 +83,9 @@ $mode-colors: (
       transition: all 0.3s ease-in-out;
     }
 
-    .#{$mode}-mode .subtitle {
-      color: $color;
+    .#{$mode}-mode .subtitle,
+    .#{$mode}-mode .text_span {
+      color: darken($color, 20%);
       transition: all 0.3s ease-in-out;
     }
 
@@ -93,8 +94,31 @@ $mode-colors: (
       color: $color;
       transition: all 0.3s ease-in-out;
     }
+
+    .#{$mode}-mode .chart > h3 {
+      filter: drop-shadow(5px 5px 1px $color);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .#{$mode}-mode .aboutme_text::-webkit-scrollbar-thumb{
+      background: $color;
+      border-radius: 10px;
+      width: 50px;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+}
+
+@mixin mode-dropshadow{
+  @each $mode, $color in $mode-colors_bg {
+    
+    .#{$mode}-mode .aboutme_image > img {
+      filter: drop-shadow(5px 7px $color) drop-shadow(-5px -7px darken($color, 15%));
+      transition: all 0.3s ease-in-out;
+    }
   }
 }
 
 @include mode-backgrounds;
 @include mode-container;
+@include mode-dropshadow;
