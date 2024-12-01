@@ -29,7 +29,7 @@ export default {
         ],
 
         datasets: [{
-          data: [5, 4, 5, 6, 3],
+          data: [4, 5, 6, 5, 4],
           label: "Passions", 
           backgroundColor: '#000',
           borderColor: '#000',
