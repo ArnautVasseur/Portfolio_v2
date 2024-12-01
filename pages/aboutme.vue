@@ -1,10 +1,9 @@
 width="30" height="30"<template>
   <div class="aboutme-page">
-
     <div class="aboutme container">
       <div class="aboutme_image">
 
-        <img src="/images/myself.png" alt="myself">
+        <img src="/images/myself.png" alt="myself" v-if="!isMobile">
         <div class="contact_me small-container">
 
           <a href="mailto:vasseur.arnaut@gmail.com" class="mail">
@@ -46,7 +45,7 @@ width="30" height="30"<template>
           <h2>About Me</h2>
         </div>
 
-        <div class="aboutme_graphs">
+        <div class="aboutme_graphs" v-if="!isMobile">
           <SoftSkillsGraph class="softskills"/>
           <PassionsGraph class="passions"/>
         </div>
@@ -64,12 +63,26 @@ width="30" height="30"<template>
 
       <IconGym size="80%" class="background_icon"/>
     </div>
-    
+    <div class="spacer"></div>
   </div>
 </template>
 
 <script lang="ts" setup>
+const isMobile = ref(false);
 
+function updateFormat() {
+  const screenWidth = window.innerWidth;
+  isMobile.value = screenWidth <= 767
+}
+
+onMounted(() => {
+  updateFormat();
+  window.addEventListener('resize', updateFormat);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', updateFormat);
+});
 </script>
 
 <style scoped lang="scss">
@@ -85,29 +98,52 @@ width="30" height="30"<template>
     width: 100%;
     height: 100%;
     padding: 30px;
-    border-radius: 20px;
+    
     overflow: hidden;
     z-index: 1;
+    gap: 20px;
+
+    @include mixins.mq("xs") {
+      flex-direction: column;
+      border-radius: 0px;
+    }
+    @include mixins.mq("md") {
+      flex-direction: row;
+      border-radius: 20px;
+    }
 
     &_image{
-      width: 30%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-direction: column;
-      height: 100%;
       border-radius: 20px;
       gap: 50px;
+      height: 100%;
+
+      @include mixins.mq("xs") {
+        width: 100%;
+        flex-direction: row;
+      }
+      @include mixins.mq("md") {
+        width: 30%;
+        flex-direction: column;
+      }
 
       img{
-        height: 55%
+        @include mixins.mq("xs") {
+          width: 30%;
+          height: auto;
+        }
+        @include mixins.mq("md") {
+          width: auto;
+          height: 50%;
+        }
       }
 
       .contact_me{
         @include mixins.small-box;
         padding: 15px;
-        width: 90%;
-        height: 45%;
+        
         display: flex;
         flex-wrap: wrap;
         gap: 20px;
@@ -117,20 +153,35 @@ width="30" height="30"<template>
           justify-content: center;
           align-items: center;
           gap: 15px;
-          font-size: 14px
+
+          @include mixins.mq("xs") {
+            font-size: 18px;
+            width: 100%;
+          }
+          @include mixins.mq("md") {
+            font-size: 14px;
+            width: 90%;
+          }
         }
       }
     }
 
     &_content{
-      width: 70%;
       display: flex;
       align-items: center;
       flex-direction: column;
       gap: 30px;
-      padding: 40px;
       color: black;
       @include mixins.box;
+
+      @include mixins.mq("xs") {
+        width: 100%;
+        padding: 20px;
+      }
+      @include mixins.mq("md") {
+        width: 70%;
+        padding: 40px;
+      }
 
       .aboutme_presentation{
         width: 100%;
@@ -205,6 +256,16 @@ width="30" height="30"<template>
         width: 45%;
         height: auto;
       }
+    }
+  }
+
+  .spacer{
+    @include mixins.mq('xs') {
+      height: 70px;
+    }
+    @include mixins.mq('md') {
+      display: none;
+      height: 0px;
     }
   }
 }

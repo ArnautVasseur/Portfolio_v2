@@ -207,7 +207,6 @@ onMounted(() => {
     width: 80%;
     height: 100%;
     position: relative;
-    
     border-radius: 20px;
     color: white;
     overflow: hidden;
