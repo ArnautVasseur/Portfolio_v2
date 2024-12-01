@@ -6,7 +6,7 @@
 
         <div class="project_header">
           <div class="project_name">
-            <IconLogo color="white" size="50px" />
+            <img :src="selectedProjectDetails.logo" alt="logo">
             <h2>{{ selectedProjectDetails.name }}</h2>
           </div>
 
@@ -233,7 +233,6 @@ onMounted(() => {
 
       .project_header{
         width: 100%;
-        height: 15%;
         overflow-y: visible;
         display: flex;
         justify-content: space-between;
@@ -246,6 +245,11 @@ onMounted(() => {
           align-items: center;
           gap: 15px;
           font-size: 32px;
+
+          img{
+            width: 50px;
+            height: 50px;
+          }
         }
         
         .project_tags{

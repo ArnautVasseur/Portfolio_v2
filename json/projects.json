@@ -1,7 +1,7 @@
 {
     "Projects":{
-        "Portfolio":{
-            "name": "Portfolio",
+        "Portfolio_v2":{
+            "name": "Portfolio_v2",
             "category": "Projet Personnel",
             "creation-date": "10-2024",
             "logo": "/pokemon_icons/logo.svg",
@@ -14,35 +14,138 @@
                 "NuxtJS",
                 "Sass",
                 "ChartJS",
-                "NodeJS",
-                "Github"
+                "NodeJS"
             ],
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin varius mattis pretium. Donec tempor eros at iaculis semper. Etiam ornare, ante id venenatis fermentum, ligula velit convallis risus, vel dignissim diam enim id elit. Pellentesque viverra nulla sit amet sollicitudin euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse condimentum justo felis, eget consectetur est iaculis vitae. Aliquam nec aliquet felis.",
+            "description": "Project carried out autonomously and alone for the simple purpose of completely recreating my portfolio from scratch, not being satisfied with the previous one. However, I wanted to try the bento design, being fashionable in UI/UX and integrate all this with a particular feature: to be able to change the color of the entire site among 18 different colors.",
             "link": "https://github.com/ArnautVasseur/Portfolio_v2",
-            "website": "test_link",
+            "website": "https://portfolio.arnaut-vasseur.fr",
             "image": "/projects_images/portfolio.jpg"
         },
-        "Portfolio2":{
-            "name": "Portfolio2",
-            "category": "Projet Personnel",
-            "creation-date": "10-2024",
-            "logo": "/pokemon_icons/logo.svg",
+
+        "Tik Tak":{
+            "name": "Tik Tak",
+            "category": "Projet Universitaire",
+            "creation-date": "01-2024",
+            "logo": "/project_logos/tiktak.svg",
             "tags":[
-                "UI-bento",
-                "portfolio",
-                "front-end"
+                "3d",
+                "back-end",
+                "customization"
+            ],
+            "tools":[
+                "VueJS",
+                "Javascript",
+                "ThreeJS"
+            ],
+            "description": "This project was completed in just four days, serving as a test of our skills within a short timeframe. The focus was on integrating 3D objects into a web environment and implementing data storage functionality. A key requirement was enabling real-time customization of the 3D model, along with the ability to save the customized model to a cart. Users were also required to create an account to access this feature.",
+            "link": "https://github.com/ArnautVasseur/tiktak",
+            "website": "https://sae501.arnaut-vasseur.fr",
+            "image": "/projects_images/tiktak.jpg"
+        },
+
+        "Project s6":{
+            "name": "Project s6",
+            "category": "Projet Universitaire",
+            "creation-date": "11-2023",
+            "logo": "/project_logos/project_s6.ico",
+            "tags":[
+                "underwater theme",
+                "back-end",
+                "UI/UX"
             ],
             "tools":[
                 "NuxtJS",
                 "Sass",
-                "ChartJS",
-                "NodeJS",
-                "Github"
+                "Javascript"
             ],
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin varius mattis pretium. Donec tempor eros at iaculis semper. Etiam ornare, ante id venenatis fermentum, ligula velit convallis risus, vel dignissim diam enim id elit. Pellentesque viverra nulla sit amet sollicitudin euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse condimentum justo felis, eget consectetur est iaculis vitae. Aliquam nec aliquet felis.",
-            "link": "https://github.com/ArnautVasseur/Portfolio_v2",
-            "website": "test_link",
-            "image": "/projects_images/portfolio.jpg"
+            "description": "University project completed in 1 month as part of the final validation of skills in the final year of BUT MMI. I obtained a grade of 14 with this work combining my skills in design, responsiveness, back-end and UI/UX.",
+            "link": "https://github.com/ArnautVasseur/projet_S.6",
+            "website": "https://projet-s6.arnaut-vasseur.fr",
+            "image": "/projects_images/project-s6.jpg"
+        },
+
+        "Portfolio_v1":{
+            "name": "Portfolio_v1",
+            "category": "Projet Universitaire",
+            "creation-date": "02-2023",
+            "logo": "/project_logos/portfolio_v1.svg",
+            "tags":[
+                "front-end",
+                "portfolio",
+                "dark Theme"
+            ],
+            "tools":[
+                "VueJS",
+                "Tailwind",
+                "Javascript"
+            ],
+            "description": "Previous portfolio created during my 3 years in MMI at Montbéliard, with the intent of using what I learned in front-end design and interactions while displaying my skills all in a website. The informations within are now outdated and the website you are on is the updated and refreshed one.",
+            "link": "https://github.com/ArnautVasseur/Portfolio_v1",
+            "website": "https://previous-portfolio.arnaut-vasseur.fr",
+            "image": "/projects_images/previous_portfolio.jpg"
+        },
+
+        "Atomic-Design":{
+            "name": "Atomic-Design",
+            "category": "Projet Universitaire",
+            "creation-date": "10-2023",
+            "logo": "/project_logos/atomic-design.svg",
+            "tags":[
+                "small-project",
+                "atomic design",
+                "front-end"
+            ],
+            "tools":[
+                "VueJS",
+                "Sass",
+                "Javascript"
+            ],
+            "description": "University project carried out in 1 week alone to test and learn how to integrate charts into a web interface with ChartJS. The time constraint was the main difficulty, which forced us to organize our time in a rational and professional way.",
+            "link": "https://github.com/ArnautVasseur/VueFood",
+            "website": "https://atomic-design.arnaut-vasseur.fr",
+            "image": "/projects_images/atomic-design.jpg"
+        },
+
+        "Data-viz":{
+            "name": "Data-Viz Project",
+            "category": "Projet Universitaire",
+            "creation-date": "11-2022",
+            "logo": "/project_logos/data-viz.svg",
+            "tags":[
+                "small-project",
+                "light/dark theme",
+                "charts"
+            ],
+            "tools":[
+                "VueJS",
+                "Tailwind",
+                "ChartJS"
+            ],
+            "description": "University project carried out in 1 week alone to test and learn how to integrate charts into a web interface with ChartJS. The time constraint was the main difficulty, which forced us to organize our time in a rational and professional way.",
+            "link": "https://github.com/ArnautVasseur/Data-Visualization",
+            "website": "https://data-viz.arnaut-vasseur.fr",
+            "image": "/projects_images/data-viz.jpg"
+        },
+
+        "Renova":{
+            "name": "Renova",
+            "category": "Projet Universitaire",
+            "creation-date": "05-2022",
+            "logo": "/project_logos/renova.ico",
+            "tags":[
+                "teamwork",
+                "front-end",
+                "long-project"
+            ],
+            "tools":[
+                "VueJS",
+                "Tailwind",
+                "Javascript"
+            ],
+            "description": "This project was completed over a span of three months by a team of three: a designer and two web developers. Mockups were created, reviewed, and approved before development began, ensuring a clear vision for the project. The codebase was carefully structured and thoroughly commented to facilitate continuity, allowing either myself or the other developer to seamlessly pick up the work at any stage. This was the first major group project I participated in, providing valuable experience in teamwork, organization, and collaborative development.",
+            "link": "https://github.com/ArnautVasseur/Renova",
+            "website": "https://renova.arnaut-vasseur.fr",
+            "image": "/projects_images/renova.jpg"
         }
     }
 }
