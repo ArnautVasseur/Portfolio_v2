@@ -51,13 +51,13 @@ width="30" height="30"<template>
         </div>
 
         <div class="aboutme_text">
-          <p>Hi, I'm <span class="text_span">Arnaut Vasseur</span>, I have been learning and improving in the web field since 2021.
-            Rather versatile, whether in the front-end or the back-end, <br/>
-            I want to create innovative interactive websites that can respond to customer requests efficiently.<br/><br/>
-            
-            I am quite curious and flexible and tend to be more effective on group projects than working alone. Bugs and errors are expected and everywhere in my workfield so organization, being reactive as well as proactive is a must have.<br/><br/>
-            Front-end development seems to be my strong point but I am willing to learn and improve on anything if it means I can be proud of the end-result.<br/><br/>
-            If you're interested in working with me or just wanting to learn more about me, don't hesistate to contact me at: <span class="text_span">vasseur.arnaut@gmail.com</span> or calling me with: <span class="text_span">06 45 63 56 94</span>.</p>
+          <p>Hello, I’m <span class="text_span">Arnaut Vasseur</span>. I have been actively learning and growing in the web development field since 2021. Versatile in both front-end and back-end development, I am passionate about creating innovative, interactive websites that meet client needs efficiently.<br/><br/>
+            I am a <span class="text_span">curious</span> and <span class="text_span">adaptable</span> developer who thrives in collaborative environments. Working in teams often brings out my best, as I value communication and shared problem-solving. In this field, encountering bugs and errors is inevitable, so I prioritize <span class="text_span">organization</span>, a <span class="text_span">proactive mindset</span>, and a <span class="text_span">reactive approach</span> to ensure smooth project execution.<br/><br/>
+            While front-end development is my current strength, I am eager to learn and improve in any area that contributes to delivering a product I can truly be proud of.<br/><br/>
+            If you’re interested in collaborating or learning more about me, feel free to reach out:<br/><br/>
+            Email: <span class="text_span">vasseur.arnaut@gmail.com</span><br/>
+            Phone:<span class="text_span"> +33 6 45 63 56 94</span>
+            </p>
         </div>
       </div>
 
