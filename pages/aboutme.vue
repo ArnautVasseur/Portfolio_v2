@@ -98,7 +98,6 @@ onBeforeUnmount(() => {
     width: 100%;
     height: 100%;
     padding: 30px;
-    
     overflow: hidden;
     z-index: 1;
     gap: 20px;

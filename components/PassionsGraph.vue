@@ -21,11 +21,11 @@ export default {
     return {
       data: {
         labels: [
-          "Développement",
-          "Café",
-          "Animés",
+          "Development",
+          "Lemon",
           "Pokemon",
-          "Rock",
+          "Video Games",
+          "Mangas",
         ],
 
         datasets: [{
@@ -89,7 +89,7 @@ export default {
   width: 100%;
   height: auto;
   overflow: visible;
-  scale: 0.8;
+  scale: 0.9;
 
   h3{
     margin-bottom: 40px;
